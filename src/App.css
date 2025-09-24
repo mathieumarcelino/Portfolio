@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Parkinsans:wght@300..800&display=swap');
 
 body{
-  background: #dfe4ea;
+  background: #f1f2f6;
   font-family: "Parkinsans", serif;
   font-optical-sizing: auto;
   font-style: normal;
@@ -82,6 +82,25 @@ body{
   line-height: 1.4;
 }
 
+.text-nav{
+  font-size: 18px;
+  color: #57606f;
+  font-weight: 500;
+  line-height: 1.2;
+  cursor: pointer;
+}
+
+.link{
+  color: #5352ed;
+  fill: #5352ed;
+  text-decoration: none;
+}
+
+.link:hover{
+  color: #4242c2;
+  fill: #4242c2;
+}
+
 .text-separator{
   color: #57606f;
   margin: 0 8px;
@@ -115,6 +134,27 @@ body{
   cursor: pointer;
 }
 
+ul {
+  list-style: inside;
+}
+
+li:not(:last-child) { 
+  margin-bottom: 8px;  
+}
+
+.btn{
+  background: #5352ed;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.btn:hover{
+  background: #4242c2;
+}
+
+span.c{
+  color: #5352ed;
+}
 
 @media screen and (min-width: 1024px) and (max-width: 1440px) {
   .b-2{
@@ -176,6 +216,10 @@ body{
   .text-4{
     font-size: 14px;
   }
+
+  .text-nav{
+    font-size: 16px;
+  }
 }
 
 @media screen and (max-width: 600px) {
@@ -233,5 +277,9 @@ body{
   
   .text-4{
     font-size: 14px;
+  }
+
+  .text-nav{
+    font-size: 16px;
   }
 }

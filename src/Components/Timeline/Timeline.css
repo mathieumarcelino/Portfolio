@@ -23,7 +23,7 @@
 }
 
 .timeline-line {
-    width: 2px;
+    width: 1px;
     height: calc(100% - 4px);
     margin-top: 4px;
     background: #ced6e0;
@@ -47,12 +47,12 @@
 }
 
 .timeline-round-image {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    fill: #ffffff;
 }
 
 .timeline-text-cont {
-    width: calc(100% - 40px);
+    width: calc(100% - 48px);
     display: flex;
     flex-direction: column;
 }
@@ -62,16 +62,11 @@
     align-items: center;
 }
 
-
-@media screen and (min-width: 1024px) and (max-width: 1440px) {
-
-}
-
-@media screen and (min-width: 600px) and (max-width: 1024px) {
-    
-}
-
 @media screen and (max-width: 600px) {
+    .timeline-text-cont {
+        width: calc(100% - 40px);
+    }
+
     .timeline-round{
         width: 26px;
         height: 26px;
@@ -81,7 +76,5 @@
 
     .timeline-round-image{
         width: 16px;
-        height: 16px;
     }
-
 }

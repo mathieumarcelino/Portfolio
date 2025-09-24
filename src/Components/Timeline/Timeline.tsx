@@ -4,6 +4,7 @@ import './Timeline.css';
 interface Timeline {
   name: string;
   place: string;
+  url: string;
   detail: string;
   description: string;
   logo: string;
@@ -55,11 +56,11 @@ const Timeline: React.FC<Timelines> = ({ title, timelines }) => {
             <div className='timeline-line-cont'>
               <div className='timeline-line'></div>
               <div className='timeline-round'>
-                <img className='timeline-round-image' src={timeline.logo} alt={`Logo de ${timeline.place}`} />
+                <img className='timeline-round-image' src={`/logos/${timeline.logo}`} alt={`Logo ${timeline.place}`} />
               </div>
             </div>
             <div className='timeline-text-cont'>
-              <h3 className='text-2 spacer-1'>{timeline.name} {timeline.place}</h3>
+              <h3 className='text-2 spacer-1'>{timeline.name} <a target="_blank" className='link' href={timeline.url}>{timeline.place}</a></h3>
               <div className='timeline-subtext-cont spacer-2'>
                 <p className='text-3 ellipsis'>{formatDate(timeline.period.start, timeline.period.end)}</p>
                 <p className='text-separator'>●</p>

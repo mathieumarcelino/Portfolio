@@ -1,8 +1,12 @@
 {
     "title": {
-        "experiences": "Experiences",
-        "trainings": "Trainings",
+        "experiences": "Experience",
+        "trainings": "Education",
         "projects": "Projects",
         "skills": "Skills"
+    },
+    "text": {
+        "contact": "Contact me",
+        "cv": "Download my CV"
     }
 }

@@ -9,7 +9,7 @@
 .project-item{
     display: flex;
     border-radius: 8px;
-    outline: 1px solid #dfe6e9;
+    outline: 1px solid #ced6e0;
     flex-direction: column;
 }
 
@@ -17,11 +17,40 @@
     width: 100%;
     height: 160px;
     border-radius: 8px 8px 0 0;
-    background: #dfe6e9;
+    background: #f1f2f6;
+    position: relative;
+}
+
+.project-image{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px 8px 0 0;
+}
+
+.project-link{
+    cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.project-github-cont{
+    display: flex;
+    gap: 8px;
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
 }
 
 .project-text-cont{
     padding: 16px;
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 192px);
+    justify-content: space-between;
+}
+
+.project-text-sub-cont{
     display: flex;
     flex-direction: column;
 }
@@ -39,9 +68,45 @@
     font-size: 14px;
 }
 
+.project-link-cont{
+    display: flex;
+    flex-direction: column;
+}
+
+.project-github{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 4px;
+    border-radius: 4px;
+    background: #5252ed;
+    gap: 2px;
+    text-decoration: none;
+}
+
+.project-github span{
+    font-size: 12px;
+    color: #ffffff;
+}
+
+.project-github svg{
+    font-size: 18px;
+    width: 18px;
+    color: #ffffff;
+}
+
+.project-github:hover { 
+  background: #4242c2; 
+  fill: #4242c2;
+}
+
 @media screen and (min-width: 1440px) {
     .project-item{
         width: calc(25% - 24px);
+    }
+
+    .project-link-cont a svg{
+        height: 20px;
     }
 }
 
@@ -70,6 +135,14 @@
     .project-language-text{
         font-size: 12px;
     }
+
+    .project-github span{
+        font-size: 11px;
+    }
+
+    .project-github svg{
+        height: 17px;
+    }
 }
 
 @media screen and (max-width: 600px) {
@@ -95,11 +168,25 @@
         border-radius: 8px 0 0 8px;
     }
 
+    .project-image{
+        border-radius: 8px 0 0 8px;
+        object-position: -10px 50%;
+    }
+
     .project-text-cont {
         width: calc(64% - 32px);
+        height: auto;
     }
     
     .project-language-text {
         font-size: 12px;
+    }
+
+    .project-github span{
+        font-size: 10px;
+    }
+
+    .project-github svg{
+        height: 16px;
     }
 }

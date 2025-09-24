@@ -11,7 +11,7 @@
     position: relative;
     width: calc(100% / 3);
     padding-right: 32px;
-    border-right: 2px solid #ced6e0;
+    border-right: 1px solid #ced6e0;
 }
 
 .quote-cont{
@@ -21,6 +21,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 .card-image-cont{
@@ -107,24 +108,34 @@
     width: 100%;
 }
 
-.card-links-image{
-    height: 20px;
-    width: 20px;
-}
 
-.card-links-link{
-    width: fit-content;
-    height: fit-content;
-}
-
-.quote-text-cont{
-
+.card-links-link svg{
+    font-size: 22px;
 }
 
 .text-quote{
-    font-size: 22px;
+    font-size: 18px;
     color: #2f3542;
     line-height: 1.4;
+}
+
+.quote-button-cont{
+    width: 100%;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.button-quote{
+    display: inline-block;
+    padding: 8px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.button-quote svg{
+    margin-left: 6px;
 }
 
 @media screen and (min-width: 1440px) {
@@ -159,7 +170,11 @@
     }
 
     .text-quote{
-        font-size: 20px;
+        font-size: 16px;
+    }
+
+    .button-quote{
+        font-size: 14px;
     }
 
 }
@@ -184,7 +199,11 @@
     }
 
     .text-quote{
-        font-size: 18px;
+        font-size: 16px;
+    }
+
+    .button-quote{
+        font-size: 14px;
     }
 
 }

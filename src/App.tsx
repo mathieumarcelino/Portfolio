@@ -22,7 +22,7 @@ function AppContent() {
         <Nav />
       </div>
       <div className='el-1'>
-        <Profile profile={data.profile} />
+        <Profile contact={translation.text.contact} cv={translation.text.cv} profile={data.profile} />
       </div>
       <div className='el-2'>
         <Timeline title={translation.title.experiences} timelines={data.experience} />

@@ -1,5 +1,8 @@
 import React from 'react';
 import './Profile.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEnvelope, faFile, faS, faSquare } from '@fortawesome/free-solid-svg-icons';
+import { faSquareGithub, faSquareInstagram, faSquareLinkedin, faSquareTwitter } from '@fortawesome/free-brands-svg-icons';
 
 interface Profile {
   firstName: string;
@@ -15,14 +18,30 @@ interface Profile {
 interface Link {
   name: string;
   url: string;
-  logo: string;
 }
 
 interface ProfileProps {
   profile: Profile;
+  cv: string;
+  contact: string;
 }
 
-const Profile: React.FC<ProfileProps> = ({ profile }) => {
+function getIconByName(name: string) {
+  switch (name.toLowerCase()) {
+    case 'github':
+      return faSquareGithub; // Replace with actual icon
+    case 'linkedin':
+      return faSquareLinkedin; // Replace with actual icon
+    case 'twitter':
+      return faSquareTwitter; // Replace with actual icon
+    case 'instagram':
+      return faSquareInstagram; // Replace with actual icon
+    default:
+      return faSquare; // Default icon
+  }
+}
+
+const Profile: React.FC<ProfileProps> = ({ contact, cv, profile }) => {
   return (
     <section className='b-1'>
       <div className='profile-cont'>
@@ -33,17 +52,17 @@ const Profile: React.FC<ProfileProps> = ({ profile }) => {
             <div className='card-image-mask-1'></div>
             <div className='card-image-mask-2'></div>
             <div className='card-image-mask-3'></div>
-            <img src={profile.image} alt={`${profile.firstName} ${profile.lastName}`} className='card-image' />
+            <img src={`/${profile.image}`} alt={`${profile.firstName} ${profile.lastName}`} className='card-image' />
           </div>
           <div className='card-text-cont'>
             <h1 className='text-2 spacer-1'>{`${profile.firstName} ${profile.lastName}`}</h1>
             <h2 className='text-3 spacer-1'>{profile.job}</h2>
-            <a href={`mailto:${profile.email}`} className='text-4 spacer-2'>{profile.email}</a>
+            <a href={`mailto:${profile.email}`} className='text-4 spacer-2 link'>{profile.email}</a>
             <div className='card-links-cont'>
               {profile.link.map((link, linkIndex) => {
                 return (
-                  <a key={linkIndex} href={link.url} target="_blank" className='card-links-link'>
-                    <img src={link.logo} alt={link.name} className='card-links-image' />
+                  <a key={linkIndex} href={link.url} target='_blank' className='card-links-link'>
+                    <FontAwesomeIcon icon={getIconByName(link.name)} className='link'/>
                   </a>
                 );
               })}
@@ -53,7 +72,17 @@ const Profile: React.FC<ProfileProps> = ({ profile }) => {
         <div className='quote-cont'>
           <div className='quote-text-cont'>
             <p className='text-quote spacer-2' dangerouslySetInnerHTML={{ __html: profile.description1 }}/>
-            <p className='text-quote' dangerouslySetInnerHTML={{ __html: profile.description2 }}/>
+            <p className='text-quote spacer-2' dangerouslySetInnerHTML={{ __html: profile.description2 }}/>
+          </div>
+          <div className='quote-button-cont'>
+            <a href={`mailto:${profile.email}`} target="_blank" className='button-quote btn'>
+              <span>{contact}</span>
+              <FontAwesomeIcon icon={faEnvelope} />
+            </a>
+            <a href="/files/cv-mathieumarcelino.pdf" target="_blank" className='button-quote btn'>
+              <span>{cv}</span>
+              <FontAwesomeIcon icon={faFile} />
+            </a>
           </div>
         </div>
       </div>

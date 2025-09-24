@@ -4,5 +4,9 @@
         "trainings": "Formations",
         "projects": "Projets",
         "skills": "Compétences"
+    },
+    "text": {
+        "contact": "Me contacter",
+        "cv": "Télécharger mon CV"
     }
 }

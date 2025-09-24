@@ -1,0 +1,151 @@
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.nav-language-cont {
+    display: flex;
+    align-items: center;
+}
+
+.select-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.nav-select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: #ffffff;
+    color: #5352ed;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 36px 8px 12px;
+    font: inherit;
+    cursor: pointer;
+    outline: none;
+    min-width: 150px;
+    font-size: 16px;
+}
+
+.nav-select:focus {
+    box-shadow: 0 0 0 3px #5252ed52;
+}
+
+.select-arrow {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    font-size: 22px;
+    color: #5352ed;
+}
+
+.nav-select.nav-select-button {
+    position: relative;
+    width: 100%;
+    text-align: left;
+}
+
+.nav-select-menu {
+    position: absolute;
+    z-index: 20;
+    margin-top: 6px;
+    min-width: 158px;
+    background: #ffffff;
+    color: #000000;
+    border: 1px solid #ced6e0;
+    border-radius: 10px;
+    padding: 6px;
+    box-shadow: 0 0 30px rgba(82, 82, 237, 0.15);
+    list-style: none;
+}
+
+.nav-select-item {
+    width: 100%;
+    text-align: left;
+    background: transparent;
+    border: 0;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font: inherit;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #1f1f1f;
+    font-size: 16px;
+}
+
+.nav-select-item:hover,
+.nav-select-item:focus {
+    outline: none;
+    background: #f0f2ff;
+}
+
+.nav-select-item[aria-selected="true"] {
+    background: #eef0ff;
+    color: #5352ed;
+}
+
+.nav-select-item .check {
+    margin-left: auto;
+    font-size: 14px;
+    color: #5352ed;
+}
+
+.custom-select {
+    position: relative;
+    display: inline-block;
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1440px) {
+
+}
+
+@media screen and (min-width: 600px) and (max-width: 1024px) {
+    .nav-select {
+        min-width: 128px;
+        font-size: 14px;
+    }
+
+    .nav-select-menu {
+        min-width: 138px;
+    }
+
+    .nav-select-item {
+        font-size: 14px;
+    }
+
+    .nav-select-item .check {
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .nav-select {
+        min-width: 128px;
+        font-size: 14px;
+    }
+
+    .nav-select-menu {
+        min-width: 118px;
+    }
+
+    .nav-select-item {
+        font-size: 14px;
+    }
+
+    .nav-select-item .check {
+        font-size: 12px;
+    }
+}

@@ -2,134 +2,156 @@
     "profile": {
         "firstName": "Mathieu",
         "lastName": "Marcelino",
-        "job": "Full Stack Developer",
+        "job": "Full-Stack Developer",
         "image": "avatar.png",
-        "email": "contact@mathi3u.com",
-        "link": [
-            {
+        "email": "mmarcelinopro@gmail.com",
+        "link": [{
                 "name": "LinkedIn",
-                "url": "https://linkedin.com/in/mathieumarcelino",
-                "logo": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAA75JREFUWIW9l19oW2UYxn/vl2RpakfH2guHU6qWImQ2dVnK4vyTdqNubAiKFwNlerML76ZXG0idiEjvdumFohOcSlUE/1SrjUEtNU0PZmkEhy1Uu80pTru4dUnXc14vttQ0bdJDm+6BwDnf+3zv8zsk5z05gku1t/fcIn77AKq7EHYCW4AmwAvMAFMKaVTiBX/+szPDw/+66SsrGe6N7LlLcI4KHAQ2uuSdRfVd8Xj70smvflkVQEssVtd4xbwIPAf4XQaX65qKnMjV271TiUTeNcC2SM/tHuY/ADpXGVwe84PXmXvcsr77fUWAUKQrCJIAmmsTvqCztpH92eRQpiLA9u2xVtvj+RZ0S43DFyDmcSI/pRIXigumeBAOh322x5xax3CArT7Mp9FoNLAEYN40vgxElmwRfhV4HRivBYFCeHa+7ugigHB4zx3AkWX8UzLndKRT8cNtLU33oXxTCwhEng9GYrcuAMyLc4xlbjWBgXQ6MQPQ399vC/JhTQCUBh+mF8BEo9EAhqcqWDvh+MLX5IjeXxMAQOFQMBhrkFBn92MoH1WxfoGajxF9AHgSF9PTveSgF4ee6i1lL6J7XXa8ppAT2Iw70G6D0W2V6zrtGN1R/IB8CaDoyeKaqO4HnVZ4tK2lKZBJxZvzGwqNCM8iXK4aLxryotJWxZEfT8at4lnHju6/VUCQC5kb6+FwrLmgpitrxSczqeu+G0/C1zo6u3KKvFP5+rjTINRXpVxBlpX4K2vFJ5erpUcffg9kyfwvUaMXxbcWAIBQZ9cjqLwBbBbh6fRovP965bij0v2jKJWmq22Ai2sFQKUPuA0IqHKstCRV++tFA0ytGQBKf0dbF2dorvI2c86gZCobXGtDybF3UUVEK20SNGkwDNYAYFVyVL43deIfWvF+XR/N+LT+c5NMDuSAt252uiKnLOuTWQNg25wACjcx/6rPkT4omdehSNdLIL1lxksg7xdPBN2tcDdwGiT5v00Pl/QqgJwsqe0CgqVNVXklMxZ/YRFAa+s+f8OmwqgK7Wu6tpWVuvKP/8GJiYEClPwlm5gYKMyL9wBwfh3D//A65oli+CIAgGxqcNo2sm+dIM45jhOzrK9/K1005a5scihj490JnK5VsiJjDuahcSvxc3nNs9yGP89P5jbW3/Omv962gSjl08298qr0+fTSofTY8LLPBFcvp0adIwjP4PblVLisKm9j7FczycTZ6laXCgZjDb6A7HbE9AgaAlqATcAcMCdwxkGyRp3BgC8/ODIyctVN3/8AV+ZZ3Hc+AMEAAAAASUVORK5CYII="
+                "url": "https://linkedin.com/in/mathi3u"
             },
             {
                 "name": "GitHub",
-                "url": "https://github.com/mathieumarcelino",
-                "logo": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAABJFJREFUWIW1l1tsVFUUhr+1Z9qhLQoVUqkW5WZALjMt02lR8TItqaIJxkTEmGgiGC8JPKmJaEL6oJGQADFBTYjoE0aFeIkgGpl2UKQwHWgHYtDEUDEtUBQqxNLLzJzlw7RlprMHSgv/217/Wuv/9z77nLO3cA3weuuKTH7yXnDKHTHTQCemGPkXtM2FaTVOwYHDh7+9NNKeMpIkX3VtEEdXA48Bnquk94qwC0e2tkZDP47JQEVV0Oco60EeGYlRS/uDRpJrWiLhaK4MV65KbyC4FuRzkLtGJw5AmSKrSstm9J7paPvFKjQ8MGvWUs/4if1bVfS5MQjb8Fmhu2dlU1NTT3rQpA/8fn9eUXH/NzdAHODpS/GCT6E+QzPjEZRMnfMBsCItlBxuchS43EOYM+X2k67OU22Ng+RQc19VzROovJReKaprC909har6JMjBkWvKQVVZ7naKikTkzWHkW+WVwUeHMiH1fosn8RtQlpGqVMeiDZHB3PJA7TOqjleMRAWnLZ40XQB5LqfYUZmhYipFORprDm0HFMDrD1aLyTSvyvHZ0yct2LFjR9INIPnxF0EyxQGX45xPr2tNNd6eY9pR4IustXCZLlQzY8Ldv5889zzwkQEEYY2tY9xlbsshNmIYdUrtcd4AxPj8S+4DmW7JSbpF4mM1gJh+UhsxAwozK6pqFxmM1uWofL8lEmoaq35LJNSE8KGNU/RhA7rIRjrIe2MVH4Qr4Vh7qcoiozDbwnUca9574noZOHIk/AfIaYuF2UZgkqXmn+slniZ2NiskTDZAviX7phtg4ObsEB4DdGURQsnwb/bYUG9ASizEeQP8bXE23uv/qfx6yVdUhRcCRRbqrBHhuK1IRFfY4qNBEtdTOajjRh32WSmRNd6qOtsH6pow318zU1RXWyXQfcZRZ2+O2gLRxPfzA3VTRyvu9y+5w2XYAxRYaFUxewWgPFCzT+GBASIC5AEVA+MLovpOPC9/269NP5y3NLIIPzQ5YcwLwFoge/cDKI2xaEPN4EFhy1Bc5LTbKVqsKsuBBDBBRTa4E/FOb6DmgC9Qs97+htQbX6BmvTdQ25ww5gzwbk5xANEtMHAgaY007ER0fyquj8dN93e3jE9+rakZDMItcA9KO9Q7FgOOoH8JWknuw+4gfo41N341ZABQlJeB/tSC8GBXt3n2aHPDRtB1wAVSB4xjJun6MldXl+PadRVhUhr6ykC/zFOxrzK4EpFtA8MT44yn4tChPRcvL7lt5pcxb97yfHfhub4ryquuikUbPx4ync51nvqzpbRsWj7I/UBxQpPVU+6cHups/+QihDWrWZaBEumNy7orpLwdizZuSg9Yb0a+QO2roBtIPaIkcFjgnMKtxUVOdTgcTtjq/H5/XsJM6LdQDiKvxyKhTcMJ6/c+1hzaKKLLgA5Sq1SlsBRY2N5ekHOD9fbOsE2oQ0SX2cRzGgBojTTuHmc8cxE2A92D8URZT877ZF/ff+lcN8LmccYztzXSuDtXzYhuxwsWLy42fZ6VoKWx5obXrpTrqwxuVJHT6unfdmz//uw/7TD8D8uXkLTiVyfMAAAAAElFTkSuQmCC"
+                "url": "https://github.com/mathieumarcelino"
             },
             {
-                "name": "X",
-                "url": "https://x.com/mathieucode",
-                "logo": "data:image/png;base64,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"
+                "name": "Instagram",
+                "url": "https://instagram.com/mathi3u"
             }
         ],
-        "description1": "I am a web developer based near Paris. I also work on various projects during my free time.",
-        "description2": "I am open to any new opportunities."
-
+        "description1": "Web <span class='c'>full-stack</span> developer based near <span class='c'>Paris</span>.<br>I regularly build <span class='c'>websites and tools</span> in my spare time. My <span class='c'>personal projects</span> are shown on <span class='c'>this page</span>.",
+        "description2": "Always open to <span class='c'>new opportunities</span>."
     },
     "experience": [{
-            "name": "Full Stack Developer",
-            "place": "at Coyote",
-            "detail": "Alternance",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec cursus libero et lacus rutrum, vitae pulvinar tellus finibus. Sed fermentum ultrices sapien tincidunt molestie. In efficitur nunc purus, vitae elementum ipsum ultrices ac.",
-            "logo": "data:image/png;base64,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",
-            "period": {
-                "start": "2019-10",
-                "end": "2023-09"
-            }
-        },
-        {
-            "name": "Full Stack Developer",
-            "place": "at Coyote",
-            "detail": "CDI",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec cursus libero et lacus rutrum, vitae pulvinar tellus finibus. Sed fermentum ultrices sapien tincidunt molestie. In efficitur nunc purus, vitae elementum ipsum ultrices ac.",
-            "logo": "data:image/png;base64,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",
+            "name": "Full-Stack Developer at",
+            "place": "Coyote",
+            "url": "https://www.moncoyote.com/",
+            "detail": "Permanent",
+            "description": "<ul><li>Redesign of the website and CMS with Symfony 7.</li><li>Built tools to automate the setup of promotional offers.</li><li>Implemented a purchase flow for the launch of a new product.</li><li>Ongoing maintenance and evolution of interfaces to ensure stability and security.</li></ul>",
+            "logo": "coyote.svg",
             "period": {
                 "start": "2023-10",
                 "end": "today"
             }
+        },
+        {
+            "name": "Full-Stack Developer at",
+            "place": "Coyote",
+            "url": "https://www.moncoyote.com/",
+            "detail": "Apprenticeship",
+            "description": "<ul><li>Developed an activity report (CRA) to track budgets and project progress.</li><li>Designed a back office for managing projects and users.</li><li>Created data visualization pages with data export.</li><li>Set up an email notification system.</li><li>Integrated Azure SSO (SAML 2.0, OAuth 2.0).</li></ul>",
+            "logo": "coyote.svg",
+            "period": {
+                "start": "2019-10",
+                "end": "2023-09"
+            }
         }
     ],
     "training": [{
-            "name": "Scientific Baccalaureate",
-            "place": "at Blaise Pascal High School",
-            "detail": "SVT",
-            "description": "Computer Science and Digital Sciences Option (ISN)",
-            "logo": "data:image/png;base64,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",
-            "period": {
-                "start": "",
-                "end": "2018"
-            }
-        },
-        {
-            "name": "Bachelor’s Degree in Digital Project Management",
-            "place": "at EEMI",
-            "detail": "RNCP Level 6 Certification",
-            "description": "Web Development Specialization. Skills in project management, website design and development, user interface creation, and digital communication strategy.",
-            "logo": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAAB/FJREFUeF7tW3tUVNUaP2fOODgxAgPzAgaBQANpFlqJEetmGlpkQoEYKpoXfIzlQhHJUVIMCUxxtCgQ8IEioaEhWixXLlxc8+olNMGAUEZeOjKAjFyGGRzncVqnFjXMDOfsw0Xtwtn/wf7t3/ft3/7263x7YGiMF3iM9x+iBKAiYIwrQE2BMR4AI7MI8vl8Ww6H4y6aGijynezJ6e1V6aqrr//a0FBbL5fLlRAEocMUGuFw3HkzZrz4gqurq1f/Iy1NwOX3XbhQ9nNra2vj/fv3VcPk/bPZsKfA9OlBfsnJSXvffHNuMIIguDxtd+7Jd6bvTsnO3pcHIAYikWzbkpgYv8HR0cEBr4NGoxGtqrr2o0SStK6i4nz1cMQgLUBIyPyXS0pOVtjYMGzIGkRRFPr88/0Z8fEffGRFCHpp6feFoaFvLSTLi+HVas3DBQuiZ587V3KFTHsyAiB1dTdrpkyZ7EfGgDWsTqfTv/LKzICrV69cx+ojo6Lnnfj66FkYhsn4Y9WN2tqbtSKRjz8EQUYQP4EM+vr6ut+4caOJTqfTQEhBMampO7f5iURu74bNWwnaBgSn1+uNfn5+E2/duiUnwhMK4OMz1aO+/ufmERgcIl9GtB6bbtOmTRPW1NTgioArgFAodGxra+v+f+v8gJLYIsnlch2USmXvUOriCqBS9alZLNtnRnRonjBZz39VKraDnR1pAYqKTh6OiopY/oT9fSzmMjNz9sXFieOtkVuNABcXl2fkcrn6sXjzlEhhGMa27Ufm5q0KcPr0d8VhYfMWPCVfH4vZgiPHc5ctX7QaSAAUW0JJFL1eb5BKv/hEKt0l7ejo0EAQRI+MjJqbsWfPgYluLgISVBbQdkVn18aETR9evlxxtqWlRcfn853S0jJ2xMREryLDi3WJRqNZDLjFP2bPfiOgvPxcJSh5bW3DNZHId/pQR9zNm7euT0tL2QvKZ4pLStoal5aWmjlEW6S5ua3Zw8PNDZR76tQZz9XU/HTLFG8hwA8/VJTNmTMzBIS0vb1D7uIiEBJh9+zJ3L5hw9pkIpxpvUTy8abPPvt0F1EbpbJHxWbbs4hwWP2hQ4UFsbHRy3AFaG/v6BQIeFwQQjabze7p6ekBwWo0/f1M5vjxIFiVSq22s2MBdcrT09e9qam+BYT39u2WJm9vTy9cAbD5jCAI4ZG3s/O+gs/nOoMYxjA7Pt2d/PGWjdtB8HFxCeLMTGkOCBbDqFQqNYvFIjyvqNUaLYtlO2gQLKYAdnoCOfmdOHHm26iosAhQJwMCAjwrKyubQPBCoZAjl8u7QbAY5vKVnyoCX54+kwiPLe40Gm3Q4FoIALoD5OQdKhSvio0mMjpQz+d78RQKWQcIHoZhWwiCsN0EqBQWnipZvDj8HSKw0YiiCDJSAuQcKhSL/x4CHCv89vSSxe+GUQIQKDCiEZCbe/DY6tUrlhKp/iSmwFOJAEoAKgKoKUCtAdQiSO0CY3gbzKFOgtRReIzfBf5Gt8ERPQorFB3dCJ3++xHe9K6MfSXF/h74XJqfX1CcmLheDHoXEAgE3F9+qWsYIDW/h5t+huVynbDPbP2g3Pv35xdERMx/S6vVWm2CcTOZNpDBiKJ8HoeD+0UI1OhowREmR0dLR4fqByXAaB9hov5REUCk0Givx4sAOGv73vh/rl25iTaOxlJ2dt/+aN36mIKyU1f/V1FcXX2csrIO5M187aVgowFFy8srz2zevOJDmUw25EMGUJuxS2YFpadl5DnwnvUwPOzpyc1MS1m3LQ/LMVjNd1oVINA/0PXf1y61wggNMTfc1aqo5Xk4i0AdMsdlZ59KFovDrSZIEhKlYmlGAnBCxIwb7u1qlE3geD9rbhM1aHUif29BXd1d7M3ioGJNABpqNOohnOxI43/qyicHPh9MVoSlyzfOP3p49xm8dsEhUQHl505UkeW+13K12tn9Rex1mPVi1BlghPHHCc+kWAjwr5PnD74aERxD5MAkp0n2MiW5kNVqDY8YDNo4PG6V6lGvnZ2NPZF903p/f6FrdfWdu0Rtig9/krIwZvugJK2FANq+/l6G7fgJRGQH9+ZsXbFBnEqE+6teyETRO0DZHhiGMZH0oNzlpVlZs0PXrCHC93a33bPnuLviRgBqRA0QDBEmR099VViwYO3gVDOeA15eXjyZDDg1hiU6ge8Csmtfl3q9sCiUSACjru8hwpjAxBVA86Cvi+lgO+jCYI04PSHlgy3S5Gwioyb1DBRFrd9WzOclDGNz1QDK/U1+emrk+5IkIvwDRX2To7Mffnr8yM4cybJNq9KJyMiGKcanVGoesNlM3AfQd+/2Nru52Vus5Hj+YK/VFQpFH5HP0h0rlyZsO3AMNwKwSp1G20dnMrAMrdVy8qui9Mi1i7cQGTSvDwoKfe7SpdIGvHZ+AQHO9VVVCrLcly8cyw+cteT9odrpNF1dDFsez7x+qIMQXdXxoI3Fc7B4AHHh+Pd5ry96m9QDJVOj4eGxQcXFeT/SaIMfRut0qCE4OEJ08WLJr2Q7P4Cvunj0+Ev/WPqeeXu18mYzy8nH29oDaty7QMiM16dsXJewfpzj+EmN1xvL0g/uzhmJ0xoEQbTIyDVvvxO+MAZGIX1RUX7u2bNHzgP8loBQG5FoIlsS996aiZOD5+qUtfUZXx7dV1ZeM+hhFOEUILQyigDUbXAUDeawukJFwLBkG0WNqAgYRYM5rK78Bq4XyW43Pab0AAAAAElFTkSuQmCC",
-            "period": {
-                "start": "2018",
-                "end": "2021"
-            }
-        },
-        {
-            "name": "Master’s Degree in Innovative Project Management",
-            "place": "at EIMP",
-            "detail": "RNCP Level 7 Certification",
-            "description": "Skills in needs analysis, designing tailored proposals, participatory management, and leading innovation projects incorporating sustainable development practices.",
-            "logo": "data:image/png;base64,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",
+            "name": "Master's in Innovative Project Management at",
+            "place": "l’EIMP",
+            "url": "https://eimparis.com/",
+            "detail": "RNCP Level 7 certification",
+            "description": "Skills in needs analysis, bespoke web architecture design, participatory management, and innovative project management with an ESG approach.",
+            "logo": "eimp.svg",
             "period": {
                 "start": "2021",
                 "end": "2023"
+            }
+        },
+        {
+            "name": "Bachelor's in Digital Project Management at",
+            "place": "l’EEMI",
+            "url": "https://www.eemi.com/",
+            "detail": "RNCP Level 6 certification",
+            "description": "Specialization in web development: project management, website design and development, user interface design, and digital communication strategy.",
+            "logo": "eemi.svg",
+            "period": {
+                "start": "2018",
+                "end": "2021"
             }
         }
     ],
     "project": [{
             "name": "TopMusicStreaming",
-            "image": "",
-            "description": "A project to create a music streaming",
+            "image": "topmusicstreaming.png",
+            "description": "Daily ranking of Apple Music, Spotify, and Deezer charts fetched via scraping.",
             "date": "2021",
-            "language": ["React", "Golang", "Javascript"],
-            "link": "music.mathi3u.com"
+            "language": ["Golang", "React", "JavaScript"],
+            "link": "music.mathi3u.com",
+            "github": [{
+                    "name": "Front",
+                    "url": "https://github.com/mathieumarcelino/TopMusicStreaming"
+                },
+                {
+                    "name": "Back",
+                    "url": "https://github.com/mathieumarcelino/TopMusicStreamingAPI"
+                }
+            ]
         },
         {
             "name": "PianoAI",
-            "image": "",
-            "description": "A project to create a piano with AI",
+            "image": "pianoai.png",
+            "description": "Python-based AI that composes piano melodies dynamically.",
             "date": "2023",
-            "language": ["React", "Python"],
-            "link": "piano.mathi3u.com"
+            "language": ["Python", "React", "JavaScript"],
+            "link": "piano.mathi3u.com",
+            "github": [{
+                    "name": "Front",
+                    "url": "https://github.com/mathieumarcelino/PianoAI"
+                },
+                {
+                    "name": "Back",
+                    "url": "https://github.com/mathieumarcelino/PianoAIAPI"
+                }
+            ]
         },
         {
-            "name": "BeerExplorer",
-            "image": "",
-            "description": "A project to create a beer explorer",
-            "date": "2022",
-            "language": ["React"],
-            "link": "beer.mathi3u.com"
-        },
-        {
-            "name": "CRA Coyote",
-            "image": "",
-            "description": "A project to create a beer explorer",
-            "date": "2022",
-            "language": ["Javascript", "PHP", "SQL"],
-            "link": "beer.mathi3u.com"
-        },
-        {
-            "name": "PlanetVerse",
-            "image": "",
-            "description": "A project to create a planet card automaticly",
-            "date": "2022",
-            "language": ["Javascript", "jQuery"],
-            "link": "planet.mathi3u.com"
+            "name": "Portfolio",
+            "image": "portfolio.png",
+            "description": "Custom portfolio built with React and TypeScript.",
+            "date": "2025",
+            "language": ["React", "TypeScript"],
+            "link": "mathi3u.com",
+            "github": [{
+                "name": "",
+                "url": "https://github.com/mathieumarcelino/Portfolio"
+            }]
         },
         {
             "name": "Connect4",
-            "image": "",
-            "description": "A Connect4 game with a solo mode and a multiplayer mode",
+            "image": "connect4.png",
+            "description": "Connect 4 in React, playable solo against a bot or two-player.",
             "date": "2021",
-            "language": ["React"],
-            "link": "connect4.mathi3u.com"
+            "language": ["React", "JavaScript"],
+            "link": "connect4.mathi3u.com",
+            "github": [{
+                "name": "",
+                "url": "https://github.com/mathieumarcelino/Connect4"
+            }]
+        },
+        {
+            "name": "BeerExplorer",
+            "image": "beerexplorer.png",
+            "description": "Search engine to discover beers from the BrewDog brewery.",
+            "date": "2022",
+            "language": ["React", "JavaScript"],
+            "link": "beer.mathi3u.com",
+            "github": [{
+                "name": "",
+                "url": "https://github.com/mathieumarcelino/BeerExplorer"
+            }]
+        },
+        {
+            "name": "8BitPlanet",
+            "image": "8bitplanet.png",
+            "description": "Algorithm that randomly generates downloadable 8-bit pixel-art planets.",
+            "date": "2022",
+            "language": ["jQuery", "JavaScript"],
+            "link": "planet.mathi3u.com",
+            "github": [{
+                "name": "",
+                "url": "https://github.com/mathieumarcelino/8BitPlanet"
+            }]
         }
     ]
 }
