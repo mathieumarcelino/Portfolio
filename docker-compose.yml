@@ -1,0 +1,15 @@
+version: '3.8'
+
+networks:
+  proxy:
+    external: true
+
+services:
+  portfolio-app:
+    container_name: portfolio-app
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    networks:
+      - proxy
