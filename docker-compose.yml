@@ -13,3 +13,5 @@ services:
       dockerfile: Dockerfile
     networks:
       - proxy
+    volumes:
+      - ./public:/var/www/public:ro
