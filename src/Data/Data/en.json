@@ -5,6 +5,7 @@
         "job": "Full-Stack Developer",
         "image": "avatar.png",
         "email": "mmarcelinopro@gmail.com",
+        "cv": "https://drive.google.com/file/d/1ZeqIg2RbNZ80wX43eQHTaahJip_vBrQ-/view",
         "link": [{
                 "name": "LinkedIn",
                 "url": "https://linkedin.com/in/mathi3u"
@@ -18,19 +19,19 @@
                 "url": "https://instagram.com/mathi3u"
             }
         ],
-        "description1": "Web <span class='c'>full-stack</span> developer based near <span class='c'>Paris</span>.<br>I regularly build <span class='c'>websites and tools</span> in my spare time. My <span class='c'>personal projects</span> are shown on <span class='c'>this page</span>.",
-        "description2": "Always open to <span class='c'>new opportunities</span>."
+        "description1": "Web <span class='c'>full-stack</span> developer, based near <span class='c'>Paris</span>.<br>I regularly create <span class='c'>sites and tools</span> in my spare time. My <span class='c'>personal projects</span> are presented on <span class='c'>this page</span>.",
+        "description2": "Always looking for <span class='c'>new opportunities</span>."
     },
     "experience": [{
             "name": "Full-Stack Developer at",
             "place": "Coyote",
             "url": "https://www.moncoyote.com/",
-            "detail": "Permanent",
-            "description": "<ul><li>Redesign of the website and CMS with Symfony 7.</li><li>Built tools to automate the setup of promotional offers.</li><li>Implemented a purchase flow for the launch of a new product.</li><li>Ongoing maintenance and evolution of interfaces to ensure stability and security.</li></ul>",
+            "detail": "Full-time",
+            "description": "<ul><li>Redesign of the website and CMS using Symfony 7.</li><li>Creation of tools to automate the implementation of promotional offers.</li><li>Implementation of a purchase journey for the launch of a new product.</li><li>Maintenance and continuous evolution of interfaces to ensure stability and security.</li></ul>",
             "logo": "coyote.svg",
             "period": {
                 "start": "2023-10",
-                "end": "today"
+                "end": "Present"
             }
         },
         {
@@ -38,7 +39,7 @@
             "place": "Coyote",
             "url": "https://www.moncoyote.com/",
             "detail": "Apprenticeship",
-            "description": "<ul><li>Developed an activity report (CRA) to track budgets and project progress.</li><li>Designed a back office for managing projects and users.</li><li>Created data visualization pages with data export.</li><li>Set up an email notification system.</li><li>Integrated Azure SSO (SAML 2.0, OAuth 2.0).</li></ul>",
+            "description": "<ul><li>Development of an activity report (CRA) for tracking budgets and project progress.</li><li>Design of a back-office for project and user management.</li><li>Creation of data visualization pages with data export and email notifications.</li><li>Integration of Azure SSO (SAML 2.0, OAuth 2.0).</li></ul>",
             "logo": "coyote.svg",
             "period": {
                 "start": "2019-10",
@@ -47,11 +48,11 @@
         }
     ],
     "training": [{
-            "name": "Master's in Innovative Project Management at",
+            "name": "Master's degree in Innovative Project Management at",
             "place": "l’EIMP",
             "url": "https://eimparis.com/",
-            "detail": "RNCP Level 7 certification",
-            "description": "Skills in needs analysis, bespoke web architecture design, participatory management, and innovative project management with an ESG approach.",
+            "detail": "RNCP Level 7 Certification",
+            "description": "Skills in needs analysis, design of custom web architectures, participatory management, and innovative project management with a CSR approach.",
             "logo": "eimp.svg",
             "period": {
                 "start": "2021",
@@ -59,22 +60,34 @@
             }
         },
         {
-            "name": "Bachelor's in Digital Project Management at",
+            "name": "Bachelor's degree in Digital Project Management at",
             "place": "l’EEMI",
             "url": "https://www.eemi.com/",
-            "detail": "RNCP Level 6 certification",
-            "description": "Specialization in web development: project management, website design and development, user interface design, and digital communication strategy.",
+            "detail": "RNCP Level 6 Certification",
+            "description": "Specialization in web development. Proficiency in project management, website design and development, user interface creation, and digital communication strategy.",
             "logo": "eemi.svg",
             "period": {
                 "start": "2018",
                 "end": "2021"
+            }
+        },
+        {
+            "name": "Scientific Baccalaureate",
+            "place": "",
+            "url": "",
+            "detail": "SVT",
+            "description": "Specialization in Computer and Digital Sciences (ISN).",
+            "logo": "baccalaureat.svg",
+            "period": {
+                "start": "2018",
+                "end": ""
             }
         }
     ],
     "project": [{
             "name": "TopMusicStreaming",
             "image": "topmusicstreaming.png",
-            "description": "Daily ranking of Apple Music, Spotify, and Deezer charts fetched via scraping.",
+            "description": "Daily ranking of Apple Music, Spotify, and Deezer tops retrieved via scraping.",
             "date": "2021",
             "language": ["Golang", "React", "JavaScript"],
             "link": "music.mathi3u.com",
@@ -91,7 +104,7 @@
         {
             "name": "PianoAI",
             "image": "pianoai.png",
-            "description": "Python-based AI that composes piano melodies dynamically.",
+            "description": "Python AI that dynamically composes piano melodies.",
             "date": "2023",
             "language": ["Python", "React", "JavaScript"],
             "link": "piano.mathi3u.com",
@@ -108,7 +121,7 @@
         {
             "name": "Portfolio",
             "image": "portfolio.png",
-            "description": "Custom portfolio built with React and TypeScript.",
+            "description": "Custom portfolio built with React TypeScript.",
             "date": "2025",
             "language": ["React", "TypeScript"],
             "link": "mathi3u.com",
@@ -120,7 +133,7 @@
         {
             "name": "Connect4",
             "image": "connect4.png",
-            "description": "Connect 4 in React, playable solo against a bot or two-player.",
+            "description": "Connect 4 in React, playable solo against a bot or with two players.",
             "date": "2021",
             "language": ["React", "JavaScript"],
             "link": "connect4.mathi3u.com",
@@ -144,7 +157,7 @@
         {
             "name": "8BitPlanet",
             "image": "8bitplanet.png",
-            "description": "Algorithm that randomly generates downloadable 8-bit pixel-art planets.",
+            "description": "Algorithm for random creation of 8-bit pixel art planets, downloadable.",
             "date": "2022",
             "language": ["jQuery", "JavaScript"],
             "link": "planet.mathi3u.com",

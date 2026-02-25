@@ -5,6 +5,7 @@
         "job": "Développeur Full-Stack",
         "image": "avatar.png",
         "email": "mmarcelinopro@gmail.com",
+        "cv": "https://drive.google.com/file/d/1ZeqIg2RbNZ80wX43eQHTaahJip_vBrQ-/view",
         "link": [{
                 "name": "LinkedIn",
                 "url": "https://linkedin.com/in/mathi3u"
@@ -30,7 +31,7 @@
             "logo": "coyote.svg",
             "period": {
                 "start": "2023-10",
-                "end": "today"
+                "end": "Aujourd’hui"
             }
         },
         {
@@ -38,7 +39,7 @@
             "place": "Coyote",
             "url": "https://www.moncoyote.com/",
             "detail": "Alternance",
-            "description": "<ul><li>Développement d’un compte rendu d’activité (CRA) pour le suivi des budgets et de l’avancement des projets.</li><li>Conception d’un back-office pour la gestion des projets et des utilisateurs.</li><li>Création de pages de data visualisation avec export des données.</li><li>Mise en place d’un système de notifications par e-mail.</li><li>Intégration du SSO Azure (SAML 2.0, OAuth 2.0).</li></ul>",
+            "description": "<ul><li>Développement d’un compte rendu d’activité (CRA) pour le suivi des budgets et de l’avancement des projets.</li><li>Conception d’un back-office pour la gestion des projets et des utilisateurs.</li><li>Création de pages de data visualisation avec export des données et notifications par e-mail.</li><li>Intégration du SSO Azure (SAML 2.0, OAuth 2.0).</li></ul>",
             "logo": "coyote.svg",
             "period": {
                 "start": "2019-10",
@@ -47,7 +48,7 @@
         }
     ],
     "training": [{
-            "name": "Mastère Manager de projets innovants à",
+            "name": "Master Manager de projets innovants à",
             "place": "l’EIMP",
             "url": "https://eimparis.com/",
             "detail": "Titre RNCP de niveau 7",
@@ -63,11 +64,23 @@
             "place": "l’EEMI",
             "url": "https://www.eemi.com/",
             "detail": "Titre RNCP de niveau 6",
-            "description": "Spécialisation en développement web : gestion de projets, conception et développement de sites, création d’interfaces utilisateur et stratégie de communication digitale.",
+            "description": "Spécialisation en développement web. Maîtrise de la gestion de projets, conception et développement de sites, création d’interfaces utilisateur et stratégie de communication digitale.",
             "logo": "eemi.svg",
             "period": {
                 "start": "2018",
                 "end": "2021"
+            }
+        },
+        {
+            "name": "Baccalauréat Scientifique",
+            "place": "",
+            "url": "",
+            "detail": "SVT",
+            "description": "Spécialité ISN (Informatique et Sciences du Numérique).",
+            "logo": "baccalaureat.svg",
+            "period": {
+                "start": "2018",
+                "end": ""
             }
         }
     ],

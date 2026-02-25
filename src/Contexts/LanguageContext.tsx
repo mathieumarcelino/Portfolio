@@ -1,4 +1,3 @@
-// LanguageContext.tsx
 import React, { createContext, useContext, useState } from 'react';
 
 // Définition des langues supportées
