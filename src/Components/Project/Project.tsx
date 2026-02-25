@@ -86,13 +86,13 @@ const Projects: React.FC<Projects> = ({ title, projects }) => {
     </div>
     <div className='project-item-cont'>
       {projects.map((project, index) => (
-        <div className='project-item' key={index}>
+        <a href={`https://${project.link}`} target="_blank" rel="noopener noreferrer" className='project-item' key={index}>
           <div className='project-image-cont'>
             <img className='project-image' src={`/images/${project.image}`} alt={`Demo ${project.name}`} />
             {!!project.github && (
               <div className="project-github-cont">
                 {project.github.map((repo, index) => (
-                  <a href={`${repo.url}`} target="_blank" key={index} className="project-github" title={repo.name}>
+                  <a href={`${repo.url}`} target="_blank" rel="noopener noreferrer" key={index} className="project-github" title={repo.name}>
                     <FontAwesomeIcon icon={faGithub} />
                     {!!repo.name && (
                       <span className="">{repo.name}</span>
@@ -110,7 +110,7 @@ const Projects: React.FC<Projects> = ({ title, projects }) => {
             </div>
             <div className="project-text-sub-cont">
               <div className="project-link-cont spacer-1">
-                <a className='text-4 link project-link' href={`https://${project.link}`} target="_blank">{project.link}</a>
+                <a className='text-4 link project-link' href={`https://${project.link}`} target="_blank" rel="noopener noreferrer">{project.link}</a>
               </div>
               <div className='project-language-cont'>
                 {project.language.map((lang, langIndex) => {
@@ -122,7 +122,7 @@ const Projects: React.FC<Projects> = ({ title, projects }) => {
               </div>
             </div>
           </div>
-        </div>
+        </a>
       ))}
     </div>
     </section>

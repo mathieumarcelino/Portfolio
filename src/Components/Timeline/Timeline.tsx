@@ -22,7 +22,7 @@ interface Timelines {
 const formatDate = (dateStringStart: string, dateStringEnd: string): string => {
   
   const formatDateText = (dateString: string): string => {
-    if (dateString === 'today') return 'Aujourd\'hui';
+    if (!/^\d{4}(-\d{2})?$/.test(dateString)) return dateString;
     const date = new Date(dateString);
     const monthNames = [
       'Janv.', 'Fevr.', 'Mars', 'Avr.', 'Mai', 'Juin', 'Juill.', 'Août', 'Sept.', 'Oct.', 'Nov.', 'Dec.'
@@ -36,8 +36,8 @@ const formatDate = (dateStringStart: string, dateStringEnd: string): string => {
     return `${dateStringStart} - ${dateStringEnd}`;
   }
 
-  if (dateStringStart === '' && /^\d{4}$/.test(dateStringEnd)) {
-    return dateStringEnd;
+  if (dateStringStart === '' && /^\d{4}$/.test(dateStringEnd) || dateStringEnd === '' && /^\d{4}$/.test(dateStringStart)) {
+    return dateStringEnd || dateStringStart;
   }
 
   return `${formatDateText(dateStringStart)} - ${formatDateText(dateStringEnd)}`;

@@ -10,6 +10,7 @@ interface Profile {
   job: string;
   image: string;
   email: string;
+  cv: string;
   link: Link[];
   description1: string;
   description2: string;
@@ -79,7 +80,7 @@ const Profile: React.FC<ProfileProps> = ({ contact, cv, profile }) => {
               <span>{contact}</span>
               <FontAwesomeIcon icon={faEnvelope} />
             </a>
-            <a href="/files/cv-mathieumarcelino.pdf" target="_blank" className='button-quote btn'>
+            <a href={profile.cv} target="_blank" className='button-quote btn'>
               <span>{cv}</span>
               <FontAwesomeIcon icon={faFile} />
             </a>

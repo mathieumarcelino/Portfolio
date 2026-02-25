@@ -78,7 +78,7 @@
     background: #fff;
     position: absolute;
     right: -2px;
-    top: 71px;
+    top: 72px;
     transform: rotate(32deg);
     z-index: 2;
 }
@@ -95,9 +95,10 @@
 }
 
 .card-image{
-    height: 90px;
+    height: 87px;
     position: absolute;
-    left: 11%;
+    left: 13%;
+    bottom: 0;
     z-index: 4;
 }
 

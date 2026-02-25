@@ -11,6 +11,11 @@
     border-radius: 8px;
     outline: 1px solid #ced6e0;
     flex-direction: column;
+    text-decoration: none;
+}
+
+.project-item:hover{
+    outline: 1px solid #5352ed;
 }
 
 .project-image-cont{
