@@ -1,16 +1,15 @@
 import React from 'react';
 import './Profile.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope, faFile, faS, faSquare } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faFile, faSquare } from '@fortawesome/free-solid-svg-icons';
 import { faSquareGithub, faSquareInstagram, faSquareLinkedin, faSquareTwitter } from '@fortawesome/free-brands-svg-icons';
 
-interface Profile {
+interface ProfileData {
   firstName: string;
   lastName: string;
   job: string;
   image: string;
   email: string;
-  cv: string;
   link: Link[];
   description1: string;
   description2: string;
@@ -22,7 +21,7 @@ interface Link {
 }
 
 interface ProfileProps {
-  profile: Profile;
+  profile: ProfileData;
   cv: string;
   contact: string;
 }
@@ -62,7 +61,7 @@ const Profile: React.FC<ProfileProps> = ({ contact, cv, profile }) => {
             <div className='card-links-cont'>
               {profile.link.map((link, linkIndex) => {
                 return (
-                  <a key={linkIndex} href={link.url} target='_blank' className='card-links-link'>
+                  <a key={linkIndex} href={link.url} target='_blank' rel="noreferrer" className='card-links-link'>
                     <FontAwesomeIcon icon={getIconByName(link.name)} className='link'/>
                   </a>
                 );
@@ -76,11 +75,11 @@ const Profile: React.FC<ProfileProps> = ({ contact, cv, profile }) => {
             <p className='text-quote spacer-2' dangerouslySetInnerHTML={{ __html: profile.description2 }}/>
           </div>
           <div className='quote-button-cont'>
-            <a href={`mailto:${profile.email}`} target="_blank" className='button-quote btn'>
+            <a href={`mailto:${profile.email}`} target="_blank" rel="noreferrer" className='button-quote btn'>
               <span>{contact}</span>
               <FontAwesomeIcon icon={faEnvelope} />
             </a>
-            <a href={profile.cv} target="_blank" className='button-quote btn'>
+            <a href='https://cv.mathi3u.com/' target="_blank" rel="noreferrer" className='button-quote btn'>
               <span>{cv}</span>
               <FontAwesomeIcon icon={faFile} />
             </a>

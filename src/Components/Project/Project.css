@@ -148,6 +148,10 @@
     .project-github svg{
         height: 17px;
     }
+
+    .project-item:hover{
+        outline: 1px solid #ced6e0;
+    }
 }
 
 @media screen and (max-width: 600px) {
@@ -193,5 +197,9 @@
 
     .project-github svg{
         height: 16px;
+    }
+
+    .project-item:hover{
+        outline: 1px solid #ced6e0;
     }
 }

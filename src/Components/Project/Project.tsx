@@ -3,7 +3,7 @@ import './Project.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
-interface Project {
+interface ProjectData {
   name: string;
   image: string;
   description: string;
@@ -15,7 +15,7 @@ interface Project {
 
 interface Projects {
   title: string;
-  projects: Project[];
+  projects: ProjectData[];
 }
 
 const languageColors: { [key: string]: { box: string, text: string } } = {
@@ -78,7 +78,7 @@ const getLanguageColors = (lang: string) => {
 };
 
 
-const Projects: React.FC<Projects> = ({ title, projects }) => {
+const Project: React.FC<Projects> = ({ title, projects }) => {
   return (
     <section className='b-1'>
     <div className='cont-title'>
@@ -86,13 +86,13 @@ const Projects: React.FC<Projects> = ({ title, projects }) => {
     </div>
     <div className='project-item-cont'>
       {projects.map((project, index) => (
-        <a href={`https://${project.link}`} target="_blank" rel="noopener noreferrer" className='project-item' key={index}>
+        <a href={`https://${project.link}`} target="_blank" rel="noreferrer" className='project-item' key={index}>
           <div className='project-image-cont'>
             <img className='project-image' src={`/images/${project.image}`} alt={`Demo ${project.name}`} />
             {!!project.github && (
               <div className="project-github-cont">
                 {project.github.map((repo, index) => (
-                  <a href={`${repo.url}`} target="_blank" rel="noopener noreferrer" key={index} className="project-github" title={repo.name}>
+                  <a href={`${repo.url}`} target="_blank" rel="noreferrer" key={index} className="project-github" title={repo.name}>
                     <FontAwesomeIcon icon={faGithub} />
                     {!!repo.name && (
                       <span className="">{repo.name}</span>
@@ -129,4 +129,4 @@ const Projects: React.FC<Projects> = ({ title, projects }) => {
   );
 };
 
-export default Projects;
+export default Project;
