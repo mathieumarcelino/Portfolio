@@ -1,7 +1,7 @@
 import React from 'react';
 import './Timeline.css';
 
-interface Timeline {
+interface TimelineData {
   name: string;
   place: string;
   url: string;
@@ -16,7 +16,7 @@ interface Timeline {
 
 interface Timelines {
   title: string;
-  timelines: Timeline[];
+  timelines: TimelineData[];
 }
 
 const formatDate = (dateStringStart: string, dateStringEnd: string): string => {
@@ -36,7 +36,7 @@ const formatDate = (dateStringStart: string, dateStringEnd: string): string => {
     return `${dateStringStart} - ${dateStringEnd}`;
   }
 
-  if (dateStringStart === '' && /^\d{4}$/.test(dateStringEnd) || dateStringEnd === '' && /^\d{4}$/.test(dateStringStart)) {
+  if ((dateStringStart === '' && /^\d{4}$/.test(dateStringEnd)) || (dateStringEnd === '' && /^\d{4}$/.test(dateStringStart))) {
     return dateStringEnd || dateStringStart;
   }
 
@@ -60,7 +60,7 @@ const Timeline: React.FC<Timelines> = ({ title, timelines }) => {
               </div>
             </div>
             <div className='timeline-text-cont'>
-              <h3 className='text-2 spacer-1'>{timeline.name} <a target="_blank" className='link' href={timeline.url}>{timeline.place}</a></h3>
+              <h3 className='text-2 spacer-1'>{timeline.name} <a target="_blank" rel="noreferrer" className='link' href={timeline.url}>{timeline.place}</a></h3>
               <div className='timeline-subtext-cont spacer-2'>
                 <p className='text-3 ellipsis'>{formatDate(timeline.period.start, timeline.period.end)}</p>
                 <p className='text-separator'>●</p>
