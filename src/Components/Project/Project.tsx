@@ -2,80 +2,12 @@ import React from "react";
 import './Project.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
-
-interface ProjectData {
-  name: string;
-  image: string;
-  description: string;
-  date: string;
-  language: string[];
-  link: string;
-  github: Array<{ name: string; url: string }> | null;
-}
+import type { ProjectData } from '../../types/project';
 
 interface Projects {
   title: string;
   projects: ProjectData[];
 }
-
-const languageColors: { [key: string]: { box: string, text: string } } = {
-  "JavaScript": {
-    "box": "#f4de00",
-    "text": "#000000"
-  },
-  "TypeScript": {
-    "box": "#2d79c7",
-    "text": "#ffffff"
-  },
-  "PHP": {
-    "box": "#777BB4",
-    "text": "#ffffff"
-  },
-  "React": {
-    "box": "#61DAFB",
-    "text": "#000000"
-  },
-  "Golang": {
-    "box": "#00ADD8",
-    "text": "#ffffff"
-  },
-  "Python": {
-    "box": "#3776AB",
-    "text": "#ffffff"
-  },
-  "HTML": {
-    "box": "#E34F26",
-    "text": "#ffffff"
-  },
-  "CSS": {
-    "box": "#1572B6",
-    "text": "#ffffff"
-  },
-  "SCSS": {
-    "box": "#CC6699",
-    "text": "#ffffff"
-  },
-  "VueJS": {
-    "box": "#4FC08D",
-    "text": "#000000"
-  },
-  "SQL": {
-    "box": "#00758F",
-    "text": "#ffffff"
-  },
-  "Symfony": {
-    "box": "#1f2937",
-    "text": "#ffffff"
-  },
-  "jQuery": {
-    "box": "#1169ae",
-    "text": "#ffffff"
-  }
-};
-
-const getLanguageColors = (lang: string) => {
-  return languageColors[lang] || { box: '#ffffff', text: '#000000' }; // Retourne des couleurs par défaut si la langue n'est pas trouvée
-};
 
 
 const Project: React.FC<Projects> = ({ title, projects }) => {
@@ -88,7 +20,7 @@ const Project: React.FC<Projects> = ({ title, projects }) => {
       {projects.map((project, index) => (
         <a href={`https://${project.link}`} target="_blank" rel="noreferrer" className='project-item' key={index}>
           <div className='project-image-cont'>
-            <img className='project-image' src={`/images/${project.image}`} alt={`Demo ${project.name}`} />
+            <img className='project-image' src={project.image} alt={`Demo ${project.name}`} />
             {!!project.github && (
               <div className="project-github-cont">
                 {project.github.map((repo, index) => (
@@ -113,12 +45,9 @@ const Project: React.FC<Projects> = ({ title, projects }) => {
                 <a className='text-4 link project-link' href={`https://${project.link}`} target="_blank" rel="noopener noreferrer">{project.link}</a>
               </div>
               <div className='project-language-cont'>
-                {project.language.map((lang, langIndex) => {
-                  const colors = getLanguageColors(lang);
-                  return (
-                    <p key={langIndex} className='project-language-text' style={{ backgroundColor: colors.box, color: colors.text }}>{lang}</p>
-                  );
-                })}
+                {project.languages.map((lang, langIndex) => (
+                  <p key={langIndex} className='project-language-text' style={{ backgroundColor: lang.boxColor, color: lang.textColor }}>{lang.name}</p>
+                ))}
               </div>
             </div>
           </div>

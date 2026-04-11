@@ -62,6 +62,20 @@
     align-items: center;
 }
 
+.timeline-not-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    column-gap: 6px;
+}
+
+.timeline-not-list div {
+    padding: 2px 6px;
+    border-radius: 10px;
+    font-size: 14px;
+    background: #f1f2f6;
+}
+
 @media screen and (max-width: 600px) {
     .timeline-text-cont {
         width: calc(100% - 40px);
