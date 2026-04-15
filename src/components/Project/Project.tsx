@@ -4,14 +4,15 @@ import type { ProjectData } from '../../types/project';
 import ProjectImage from "./layers/ProjectImage";
 import ProjectGithub from "./layers/ProjectGithub";
 import ProjectLanguages from "./layers/ProjectLanguages";
+import { useLanguage } from "contexts/LanguageContext";
 
 interface Projects {
   projects: ProjectData[];
-  t: (key: string) => string;
 }
 
-
-const Project: React.FC<Projects> = ({ projects, t }) => {
+const Project: React.FC<Projects> = ({ projects }) => {
+  const { t } = useLanguage();
+      
   const handleProjectClick = (link: string) => {
     window.open(`https://${link}`, '_blank');
   };
@@ -36,14 +37,7 @@ const Project: React.FC<Projects> = ({ projects, t }) => {
               </div>
               <div className="project-text-sub-cont">
                 <div className="project-link-cont spacer-1">
-                  <a 
-                    className='text-4 link project-link' 
-                    href={`https://${project.link}`} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    onClick={(e) => e.stopPropagation()}
-                    title={project.name}
-                  >
+                  <a className='text-4 link project-link' href={`https://${project.link}`} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} title={project.name} >
                     {project.link}
                   </a>
                 </div>

@@ -1,6 +1,13 @@
 import { useState, useEffect } from 'react';
 import { getLinks } from '../services/strapi';
-import type { LinkData } from '../types/link';
+import type { LinkData, StrapiLink } from '../types/link';
+
+function mapLinks(data: StrapiLink[]): LinkData[] {
+  return data.map(l => ({
+    name: l.name,
+    url: l.url
+  }));
+}
 
 export function useLinks(): LinkData[] | null {
   const [links, setLinks] = useState<LinkData[] | null>(null);
@@ -10,12 +17,7 @@ export function useLinks(): LinkData[] | null {
     getLinks()
       .then((data) => {
         if (!data) return;
-        setLinks(
-          data.map(l => ({
-            name: l.name,
-            url: l.url
-          }))
-        );
+        setLinks(mapLinks(data));
       })
       .catch(console.error);
   }, []);

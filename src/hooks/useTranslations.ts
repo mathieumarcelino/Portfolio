@@ -1,22 +1,26 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useEffect, useCallback, useRef } from 'react';
 import { getTranslations } from '../services/strapi';
+import type { StrapiTranslation, TranslationData } from '../types/translations';
 
-export function useTranslations(language: 'fr' | 'en') {
-  const [map, setMap] = useState<Record<string, string>>({});
+function mapTranslations(data: StrapiTranslation[]): Record<string, string> {
+  return Object.fromEntries(data.map(({ key, value }) => [key, value]));
+}
+
+export function useTranslations(language: string): TranslationData {
+  const mapRef = useRef<Record<string, string>>({});
 
   useEffect(() => {
-    setMap({});
     getTranslations(language)
       .then((data) => {
         if (!data) return;
-        setMap(Object.fromEntries(data.map(({ key, value }) => [key, value])));
+        mapRef.current = mapTranslations(data);
       })
       .catch(console.error);
   }, [language]);
 
   const t = useCallback(
-    (key: string, fallback = key): string => map[key] ?? fallback,
-    [map]
+    (key: string): string => mapRef.current[key] || key,
+    []
   );
 
   return t;

@@ -8,7 +8,4 @@ export interface StrapiTranslation {
 
 // --- Types frontend ---
 
-export interface TranslationData {
-  key: string;
-  value: string;
-}
+export type TranslationData = (key: string) => string;

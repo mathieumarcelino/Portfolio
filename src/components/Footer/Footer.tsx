@@ -1,11 +1,12 @@
 import React from 'react';
 import './Footer.css';
+import { useLanguage } from '../../contexts/LanguageContext';
 
-interface FooterProps {
-  t: (key: string) => string;
-}
+interface FooterProps {}
 
-const Footer: React.FC<FooterProps> = ({ t }) => {
+const Footer: React.FC<FooterProps> = () => {
+  const { t } = useLanguage();
+  
   return (
     <section className='b-1'>
       <div className='footer'>

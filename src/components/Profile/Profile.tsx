@@ -6,11 +6,11 @@ import { faEnvelope, faFile, faSquare } from '@fortawesome/free-solid-svg-icons'
 import { faSquareGithub, faSquareInstagram, faSquareLinkedin, faSquareTwitter, faSquareFacebook, faSquareYoutube } from '@fortawesome/free-brands-svg-icons';
 import type { ProfileData } from '../../types/profile';
 import type { LinkData } from '../../types/link';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 interface ProfileProps {
   profile: ProfileData;
   links: LinkData[] | null;
-  t: (key: string) => string;
 }
 
 function getIconByName(name: string) {
@@ -32,7 +32,9 @@ function getIconByName(name: string) {
   }
 }
 
-const Profile: React.FC<ProfileProps> = ({ profile, links, t }) => {
+const Profile: React.FC<ProfileProps> = ({ profile, links }) => {
+  const { t } = useLanguage();
+  
   return (
     <section className='b-1'>
       <div className='profile-cont'>
@@ -50,13 +52,11 @@ const Profile: React.FC<ProfileProps> = ({ profile, links, t }) => {
             <h2 className='text-3 spacer-1'>{profile.job}</h2>
             <a href={`mailto:${profile.email}`} className='text-4 spacer-2 link'>{profile.email}</a>
             <div className='card-links-cont'>
-              {links?.map((link, linkIndex) => {
-                return (
-                  <a key={linkIndex} href={link.url} target='_blank' rel="noreferrer" className='card-links-link'>
-                    <FontAwesomeIcon icon={getIconByName(link.name)} className='link'/>
-                  </a>
-                );
-              })}
+              {links && links.map((link, linkIndex) => (
+                <a key={linkIndex} href={link.url} target='_blank' rel="noreferrer" className='card-links-link'>
+                  <FontAwesomeIcon icon={getIconByName(link.name)} className='link' />
+                </a>
+              ))}
             </div>
           </div>
         </div>

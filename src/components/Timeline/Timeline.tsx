@@ -5,13 +5,15 @@ import TimelineList from './layers/TimelineList';
 import TimelineTitle from './layers/TimelineTitle';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAward, faBuilding } from "@fortawesome/free-solid-svg-icons";
+import { useLanguage } from '../../contexts/LanguageContext';
 
 interface Timelines {
   timelines: TimelineData[];
-  t: (key: string) => string;
 }
 
-const Timeline: React.FC<Timelines> = ({ timelines, t }) => {
+const Timeline: React.FC<Timelines> = ({ timelines }) => {
+  const { t } = useLanguage();
+  
   return (
     <section className='b-2'>
       <div className='cont-title'>
@@ -31,7 +33,7 @@ const Timeline: React.FC<Timelines> = ({ timelines, t }) => {
             </div>
             <div className='timeline-text-cont'>
               <h3 className='text-2 spacer-1'>
-                <TimelineTitle name={timeline.name} place={timeline.place} url={timeline.url} t={t} />
+                <TimelineTitle name={timeline.name} place={timeline.place} url={timeline.url} />
               </h3>
               <div className='timeline-subtext-cont spacer-2'>
                 <p className='text-3 ellipsis'>{timeline.period}</p>

@@ -1,13 +1,14 @@
 import React from 'react';
+import { useLanguage } from '../../../contexts/LanguageContext';
 
 interface TimelineTitleProps {
   name: string;
   place: string;
   url: string;
-  t: (key: string) => string;
 }
 
-const TimelineTitle: React.FC<TimelineTitleProps> = ({ name, place, url, t }) => {
+const TimelineTitle: React.FC<TimelineTitleProps> = ({ name, place, url }) => {
+  const { t } = useLanguage();
   return (
     <>
       {name}{' '}

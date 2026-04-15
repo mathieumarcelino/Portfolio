@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { getProfile } from '../services/strapi';
-import type { ProfileData } from '../types/profile';
+import type { ProfileData, StrapiProfile } from '../types/profile';
 
 const STRAPI_URL = process.env.REACT_APP_STRAPI_URL || 'http://localhost:1337';
 
@@ -8,7 +8,7 @@ function resolveUrl(url: string): string {
   return url.startsWith('http') ? url : `${STRAPI_URL}${url}`;
 }
 
-function mapProfile(data: any): ProfileData {
+function mapProfile(data: StrapiProfile): ProfileData {
   const avatarUrl = data.image?.url;
   return {
     firstName: data.firstName,
@@ -20,7 +20,7 @@ function mapProfile(data: any): ProfileData {
   };
 }
 
-export function useProfile(language: 'fr' | 'en'): ProfileData | null {
+export function useProfile(language: string): ProfileData | null {
   const [profile, setProfile] = useState<ProfileData | null>(null);
 
   useEffect(() => {

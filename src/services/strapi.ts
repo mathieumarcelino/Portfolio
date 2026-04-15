@@ -3,6 +3,7 @@ import type { StrapiLink } from '../types/link';
 import type { StrapiTranslation } from '../types/translations';
 import type { StrapiProject } from '../types/project';
 import type { StrapiTimeline } from '../types/timeline';
+import type { StrapiI18n } from 'types/i18n';
 
 
 const STRAPI_URL = process.env.REACT_APP_STRAPI_URL || 'http://localhost:1337';
@@ -25,12 +26,12 @@ async function fetchStrapi<T>(path: string, params: Record<string, string | stri
   const res = await fetch(url, { headers });
   if (!res.ok) throw new Error(`Strapi fetch error: ${res.status} ${url}`);
   const json = await res.json();
-  return json.data as T;
+  return json.data ? (json.data as T) : (json as T);
 }
 
 // --- Fonctions d'accès ---
 
-export async function getProfile(locale: 'fr' | 'en' = 'fr'): Promise<StrapiProfile | null> {
+export async function getProfile(locale: string = 'fr'): Promise<StrapiProfile | null> {
   const data = await fetchStrapi<StrapiProfile>('profile', {
     locale,
     populate: '*',
@@ -42,7 +43,7 @@ export async function getLinks(): Promise<StrapiLink[]> {
   return fetchStrapi<StrapiLink[]>('links');
 }
 
-export async function getTranslations(locale: 'fr' | 'en' = 'fr'): Promise<StrapiTranslation[] | null> {
+export async function getTranslations(locale: string = 'fr'): Promise<StrapiTranslation[] | null> {
   const data = await fetchStrapi<StrapiTranslation[]>('translations', {
     locale,
     populate: '*',
@@ -50,7 +51,7 @@ export async function getTranslations(locale: 'fr' | 'en' = 'fr'): Promise<Strap
   return data ?? null;
 }
 
-export async function getExperiences(locale: 'fr' | 'en' = 'fr'): Promise<StrapiTimeline[]> {
+export async function getExperiences(locale: string = 'fr'): Promise<StrapiTimeline[]> {
   return fetchStrapi<StrapiTimeline[]>('experiences', {
     locale,
     populate: '*',
@@ -58,7 +59,7 @@ export async function getExperiences(locale: 'fr' | 'en' = 'fr'): Promise<Strapi
   });
 }
 
-export async function getEducations(locale: 'fr' | 'en' = 'fr'): Promise<StrapiTimeline[]> {
+export async function getEducations(locale: string = 'fr'): Promise<StrapiTimeline[]> {
   return fetchStrapi<StrapiTimeline[]>('educations', {
     locale,
     populate: '*',
@@ -66,10 +67,16 @@ export async function getEducations(locale: 'fr' | 'en' = 'fr'): Promise<StrapiT
   });
 }
 
-export async function getProjects(locale: 'fr' | 'en' = 'fr'): Promise<StrapiProject[]> {
+export async function getProjects(locale: string = 'fr'): Promise<StrapiProject[]> {
   return fetchStrapi<StrapiProject[]>('projects', {
     locale,
     populate: '*',
     sort: ['date:desc'],
+  });
+}
+
+export async function getI18n(): Promise<StrapiI18n[]> {
+  return fetchStrapi<StrapiI18n[]>('i18n/locales', {
+    sort: ['isDefault:desc'],
   });
 }

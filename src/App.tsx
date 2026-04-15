@@ -11,7 +11,6 @@ import Footer from 'components/Footer/Footer';
 import { LanguageProvider, useLanguage } from './contexts/LanguageContext';
 import { useProfile } from './hooks/useProfile';
 import { useLinks } from 'hooks/useLink';
-import { useTranslations } from 'hooks/useTranslations';
 import { useExperiences } from './hooks/useExperiences';
 import { useEducations } from 'hooks/useEducations';
 import { useProjects } from './hooks/useProjects';
@@ -19,11 +18,10 @@ import { useProjects } from './hooks/useProjects';
 function AppContent() {
   const { language } = useLanguage();
 
-  const t = useTranslations(language);
   const links = useLinks();
   const profile = useProfile(language);
-  const experiences = useExperiences(language, t);
-  const educations = useEducations(language, t);
+  const experiences = useExperiences(language);
+  const educations = useEducations(language);
   const projects = useProjects(language);
 
   if (!profile || !experiences || !educations || !projects) {
@@ -36,17 +34,17 @@ function AppContent() {
         <Nav />
       </div>
       <div className='el-1'>
-        <Profile profile={profile} links={links} t={t} />
+        <Profile profile={profile} links={links} />
       </div>
       <div className='el-2'>
-        <Timeline timelines={experiences} t={t} />
-        <Timeline timelines={educations} t={t} />
+        <Timeline timelines={experiences} />
+        <Timeline timelines={educations} />
       </div>
       <div className='el-1'>
-        <Project projects={projects} t={t} />
+        <Project projects={projects} />
       </div>
       <div className='el-1'>
-        <Footer t={t} />
+        <Footer />
       </div>  
     </div>
   );
