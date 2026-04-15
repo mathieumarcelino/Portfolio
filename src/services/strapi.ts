@@ -1,9 +1,8 @@
 import type { StrapiProfile } from '../types/profile';
 import type { StrapiLink } from '../types/link';
 import type { StrapiTranslation } from '../types/translations';
-import type { StrapiExperience } from '../types/experience';
 import type { StrapiProject } from '../types/project';
-import { StrapiEducation } from 'types/eduction';
+import type { StrapiTimeline } from '../types/timeline';
 
 
 const STRAPI_URL = process.env.REACT_APP_STRAPI_URL || 'http://localhost:1337';
@@ -51,16 +50,16 @@ export async function getTranslations(locale: 'fr' | 'en' = 'fr'): Promise<Strap
   return data ?? null;
 }
 
-export async function getExperiences(locale: 'fr' | 'en' = 'fr'): Promise<StrapiExperience[]> {
-  return fetchStrapi<StrapiExperience[]>('experiences', {
+export async function getExperiences(locale: 'fr' | 'en' = 'fr'): Promise<StrapiTimeline[]> {
+  return fetchStrapi<StrapiTimeline[]>('experiences', {
     locale,
     populate: '*',
     sort: ['beginning:desc', 'isCurrent:desc'],
   });
 }
 
-export async function getEducations(locale: 'fr' | 'en' = 'fr'): Promise<StrapiEducation[]> {
-  return fetchStrapi<StrapiEducation[]>('educations', {
+export async function getEducations(locale: 'fr' | 'en' = 'fr'): Promise<StrapiTimeline[]> {
+  return fetchStrapi<StrapiTimeline[]>('educations', {
     locale,
     populate: '*',
     sort: ['beginning:desc', 'isCurrent:desc'],

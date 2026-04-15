@@ -13,22 +13,6 @@ export interface StrapiLanguage {
   textColor: string;
 }
 
-export interface StrapiImageFormat {
-  url: string;
-  width: number;
-  height: number;
-}
-
-export interface StrapiImage {
-  url: string;
-  formats: {
-    large?: StrapiImageFormat;
-    medium?: StrapiImageFormat;
-    small?: StrapiImageFormat;
-    thumbnail?: StrapiImageFormat;
-  };
-}
-
 export interface StrapiProject {
   id: number;
   documentId: string;
@@ -38,7 +22,7 @@ export interface StrapiProject {
   url: string;
   github: StrapiGithub[];
   languages: StrapiLanguage[];
-  image: StrapiImage | null;
+  image?: { url: string };
   locale: string;
 }
 
@@ -50,12 +34,17 @@ export interface ProjectLanguage {
   textColor: string;
 }
 
+export interface ProjetGithub {
+  name: string;
+  url: string;
+}
+
 export interface ProjectData {
   name: string;
-  image: string;
+  image: string | null;
   description: string;
   date: string;
   languages: ProjectLanguage[];
   link: string;
-  github: Array<{ name: string; url: string }>;
+  github: ProjetGithub[];
 }

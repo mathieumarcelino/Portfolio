@@ -3,14 +3,14 @@ import ReactMarkdown from 'react-markdown';
 import './Profile.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faFile, faSquare } from '@fortawesome/free-solid-svg-icons';
-import { faSquareGithub, faSquareInstagram, faSquareLinkedin, faSquareTwitter } from '@fortawesome/free-brands-svg-icons';
+import { faSquareGithub, faSquareInstagram, faSquareLinkedin, faSquareTwitter, faSquareFacebook, faSquareYoutube } from '@fortawesome/free-brands-svg-icons';
 import type { ProfileData } from '../../types/profile';
 import type { LinkData } from '../../types/link';
 
 interface ProfileProps {
   profile: ProfileData;
   links: LinkData[] | null;
-  translations: (key: string) => string;
+  t: (key: string) => string;
 }
 
 function getIconByName(name: string) {
@@ -23,12 +23,16 @@ function getIconByName(name: string) {
       return faSquareTwitter;
     case 'instagram':
       return faSquareInstagram;
+    case 'facebook':
+      return faSquareFacebook;
+    case 'youtube':
+      return faSquareYoutube;
     default:
       return faSquare;
   }
 }
 
-const Profile: React.FC<ProfileProps> = ({ profile, links, translations: t }) => {
+const Profile: React.FC<ProfileProps> = ({ profile, links, t }) => {
   return (
     <section className='b-1'>
       <div className='profile-cont'>

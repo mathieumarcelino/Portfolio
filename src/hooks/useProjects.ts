@@ -9,14 +9,14 @@ function resolveUrl(url: string): string {
 }
 
 function mapProject(p: StrapiProject): ProjectData {
-  const imageUrl = p.image?.formats?.large?.url ?? p.image?.url ?? '';
+  const imageUrl = p.image?.url;
 
   return {
     name: p.name,
     description: p.description,
     date: p.date.substring(0, 4),
     link: p.url,
-    image: imageUrl ? resolveUrl(imageUrl) : '',
+    image: imageUrl ? resolveUrl(imageUrl) : null,
     github: p.github ?? [],
     languages: p.languages.map((l) => ({
       name: l.name,

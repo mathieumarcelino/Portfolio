@@ -1,6 +1,5 @@
 import React from 'react';
-import { useLanguage } from '../../../Contexts/LanguageContext';
-import './LanguageSelect.css';
+import { useLanguage } from '../../../contexts/LanguageContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
@@ -11,7 +10,7 @@ const OPTIONS: { value: Lang; label: string }[] = [
 
 ];
 
-export const LanguageSelect: React.FC = () => {
+export const NavLanguageSelect: React.FC = () => {
     const { language, setLanguage } = useLanguage();
     const [open, setOpen] = React.useState(false);
     const btnRef = React.useRef<HTMLButtonElement>(null);

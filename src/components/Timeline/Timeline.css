@@ -51,6 +51,11 @@
     fill: #ffffff;
 }
 
+.timeline-round svg {
+    width: 18px;
+    color: #ffffff;
+}
+
 .timeline-text-cont {
     width: calc(100% - 48px);
     display: flex;

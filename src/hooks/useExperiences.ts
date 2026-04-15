@@ -1,29 +1,31 @@
 import { useState, useEffect, useRef } from 'react';
 import { getExperiences } from '../services/strapi';
 import { formatPeriod } from '../utils/formatDate';
-import type { StrapiExperience, StrapiAchievement, TimelineData } from '../types/experience';
+import type { StrapiTimeline, StrapiAchievement, TimelineData } from '../types/timeline';
 
 const STRAPI_URL = process.env.REACT_APP_STRAPI_URL || 'http://localhost:1337';
 
-function mapExperience(e: StrapiExperience, t: (key: string) => string): TimelineData {
+function resolveUrl(url: string): string {
+    return url.startsWith('http') ? url : `${STRAPI_URL}${url}`;
+}
+
+function mapExperience(e: StrapiTimeline, t: (key: string) => string): TimelineData {
     const logoUrl = e.logo?.url;
     const description =
         e.achievements.length > 0
-            ? e.achievements.map((a: StrapiAchievement) => a.value)
-            : [];
+        ? e.achievements.map((a: StrapiAchievement) => a.value)
+        : [];
 
     return {
+        type: 'experience',
         name: e.name,
         place: e.place,
         url: e.url,
         detail: e.detail,
         description: description,
-        logo: logoUrl
-            ? logoUrl.startsWith('http')
-                ? logoUrl
-                : `${STRAPI_URL}${logoUrl}`
-            : '',
-        period: formatPeriod(e.beginning, e.ending, e.isCurrent, t),
+        isList: e.isList,
+        logo: logoUrl ? resolveUrl(logoUrl) : null,
+        period: formatPeriod(e.beginning, e.ending, e.isCurrent, e.isYearly, t)
     };
 }
 
