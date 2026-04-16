@@ -34,18 +34,24 @@ function mapExperiences(data: StrapiTimeline[], t: TranslationData): TimelineDat
 }
 
 export function useExperiences(language: string): TimelineData[] | null {
+    const [raw, setRaw] = useState<StrapiTimeline[] | null>(null);
     const [experiences, setExperiences] = useState<TimelineData[] | null>(null);
     const { t } = useLanguage();
 
     useEffect(() => {
-        setExperiences(null);
+        setRaw(null);
         getExperiences(language)
         .then((data) => {
             if (!data) return;
-            setExperiences(mapExperiences(data, t));
+            setRaw(data);
         })
         .catch(console.error);
-    }, [language, t]);
+    }, [language]);
+
+    useEffect(() => {
+        if (!raw) { setExperiences(null); return; }
+        setExperiences(mapExperiences(raw, t));
+    }, [raw, t]);
 
     return experiences;
 }
