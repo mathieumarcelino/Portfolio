@@ -46,7 +46,6 @@ export async function getLinks(): Promise<StrapiLink[]> {
 export async function getTranslations(locale: string = 'fr'): Promise<StrapiTranslation[] | null> {
   const data = await fetchStrapi<StrapiTranslation[]>('translations', {
     locale,
-    populate: '*',
   });
   return data ?? null;
 }

@@ -34,18 +34,24 @@ function mapEducations(data: StrapiTimeline[], t: TranslationData): TimelineData
 }
 
 export function useEducations(language: string): TimelineData[] | null {
+    const [raw, setRaw] = useState<StrapiTimeline[] | null>(null);
     const [educations, setEducations] = useState<TimelineData[] | null>(null);
     const { t } = useLanguage();
 
     useEffect(() => {
-        setEducations(null);
+        setRaw(null);
         getEducations(language)
         .then((data) => {
             if (!data) return;
-            setEducations(mapEducations(data, t));
+            setRaw(data);
         })
         .catch(console.error);
-    }, [language, t]);
+    }, [language]);
+
+    useEffect(() => {
+        if (!raw) { setEducations(null); return; }
+        setEducations(mapEducations(raw, t));
+    }, [raw, t]);
 
     return educations;
 }

@@ -1,4 +1,4 @@
-import { useEffect, useCallback, useRef } from 'react';
+import { useEffect, useCallback, useState } from 'react';
 import { getTranslations } from '../services/strapi';
 import type { StrapiTranslation, TranslationData } from '../types/translations';
 
@@ -7,20 +7,20 @@ function mapTranslations(data: StrapiTranslation[]): Record<string, string> {
 }
 
 export function useTranslations(language: string): TranslationData {
-  const mapRef = useRef<Record<string, string>>({});
+  const [map, setMap] = useState<Record<string, string>>({});
 
   useEffect(() => {
     getTranslations(language)
       .then((data) => {
         if (!data) return;
-        mapRef.current = mapTranslations(data);
+        setMap(mapTranslations(data));
       })
       .catch(console.error);
   }, [language]);
 
   const t = useCallback(
-    (key: string): string => mapRef.current[key] || key,
-    []
+    (key: string): string => map[key] ?? key,
+    [map]
   );
 
   return t;
