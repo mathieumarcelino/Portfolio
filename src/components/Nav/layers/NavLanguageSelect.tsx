@@ -1,21 +1,14 @@
 import React from 'react';
-import { useLanguage } from '../../../Contexts/LanguageContext';
-import './LanguageSelect.css';
+import { useLanguage } from '../../../contexts/LanguageContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
-type Lang = 'en' | 'fr';
-const OPTIONS: { value: Lang; label: string }[] = [
-    { value: 'fr', label: 'Français' },
-    { value: 'en', label: 'English' }
-
-];
-
-export const LanguageSelect: React.FC = () => {
-    const { language, setLanguage } = useLanguage();
+export const NavLanguageSelect: React.FC = () => {
+    const { language, setLanguage, i18n } = useLanguage();
     const [open, setOpen] = React.useState(false);
     const btnRef = React.useRef<HTMLButtonElement>(null);
     const listRef = React.useRef<HTMLUListElement>(null);
+    const options = i18n.map(lang => ({ value: lang.code, label: lang.name }));
 
     // fermer au clic extérieur
     React.useEffect(() => {
@@ -36,7 +29,7 @@ export const LanguageSelect: React.FC = () => {
         el?.focus();
     };
 
-    const currentIndex = OPTIONS.findIndex(o => o.value === language);
+    const currentIndex = options.findIndex(o => o.value === language);
 
     const onButtonKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>) => {
         if (e.key === 'ArrowDown' || e.key === 'Enter' || e.key === ' ') {
@@ -57,7 +50,7 @@ export const LanguageSelect: React.FC = () => {
         else if (e.key === 'End') { e.preventDefault(); focusItem(items.length - 1); }
     };
 
-    const choose = (val: Lang) => {
+    const choose = (val: string) => {
         setLanguage(val);
         setOpen(false);
         btnRef.current?.focus();
@@ -75,7 +68,7 @@ export const LanguageSelect: React.FC = () => {
                 onClick={() => setOpen(o => !o)}
                 onKeyDown={onButtonKeyDown}
             >
-                {OPTIONS.find(o => o.value === language)?.label ?? 'Language'}
+                {options.find(o => o.value === language)?.label ?? 'Language'}
                 <span className='select-arrow' aria-hidden>▾</span>
             </button>
 
@@ -88,7 +81,7 @@ export const LanguageSelect: React.FC = () => {
                     onKeyDown={onListKeyDown}
                     aria-activedescendant={`lang-${language}`}
                 >
-                    {OPTIONS.map((opt) => (
+                    {options.map((opt) => (
                         <li key={opt.value}>
                             <button
                                 id={`lang-${opt.value}`}

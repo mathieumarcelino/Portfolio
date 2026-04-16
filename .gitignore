@@ -1,23 +1,59 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# ========================
+# Dependencies
+# ========================
+node_modules/
+strapi/node_modules/
 
-# dependencies
-/node_modules
-/.pnp
-.pnp.js
-
-# testing
-/coverage
-
-# production
-/build
-
-# misc
-.DS_Store
+# ========================
+# Environment variables
+# ========================
+.env
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
+strapi/.env
 
+# ========================
+# React (CRA) build output
+# ========================
+/build
+
+# ========================
+# Strapi
+# ========================
+strapi/dist/
+strapi/build/
+strapi/.tmp/
+strapi/.strapi/
+strapi/exports/
+strapi/license.txt
+strapi/.strapi-updater.json
+strapi/.strapi-cloud.json
+strapi/public/uploads/*
+!strapi/public/uploads/.gitkeep
+
+# ========================
+# Logs
+# ========================
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# ========================
+# Tests
+# ========================
+/coverage
+strapi/coverage/
+
+# ========================
+# TypeScript
+# ========================
+*.tsbuildinfo
+
+# ========================
+# OS
+# ========================
+.DS_Store
+Thumbs.db

@@ -1,6 +1,6 @@
 import React from 'react';
 import './Nav.css';
-import { LanguageSelect } from './Layers/LanguageSelect';
+import { NavLanguageSelect } from './layers/NavLanguageSelect';
 
 const Nav: React.FC = () => {
   return (
@@ -10,7 +10,7 @@ const Nav: React.FC = () => {
           <h3 className='text-2'>mathi3u.com</h3>
         </div>
         <div className='nav-language-cont'>
-          <LanguageSelect />
+          <NavLanguageSelect />
         </div>
       </div>
     </section>
