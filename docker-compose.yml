@@ -11,9 +11,10 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-      # Variables de build de l'app, lues dans le .env à côté de ce fichier
+      # Variables de build (accès à Strapi), lues dans le .env à côté de ce fichier
       args:
-        REACT_APP_STRAPI_URL: ${REACT_APP_STRAPI_URL}
-        REACT_APP_STRAPI_TOKEN: ${REACT_APP_STRAPI_TOKEN:-}
+        STRAPI_URL: ${STRAPI_URL}
+        STRAPI_TOKEN: ${STRAPI_TOKEN:-}
+        STRAPI_MEDIA_URL: ${STRAPI_MEDIA_URL:-}
     networks:
       - proxy

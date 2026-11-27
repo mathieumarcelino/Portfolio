@@ -1,4 +1,4 @@
-# --- Étape 1 : build de l'application React ---
+# --- Étape 1 : génération du site statique (Astro) ---
 FROM node:22-alpine AS build
 
 WORKDIR /app
@@ -10,18 +10,21 @@ RUN npm ci --no-audit --no-fund
 
 COPY . .
 
-# Variables lues par Create React App au moment du build et incluses dans
-# le bundle (donc visibles par les visiteurs : jamais de secret en écriture).
-# Fournies par docker-compose.yml (args) ou via --build-arg.
-ARG REACT_APP_STRAPI_URL
-ARG REACT_APP_STRAPI_TOKEN
+# Variables lues par Astro au moment du build pour interroger Strapi.
+# Elles ne sont utilisées que dans cette étape : ni le site généré ni
+# l'image finale ne les contiennent. Fournies par docker-compose.yml.
+ARG STRAPI_URL
+ARG STRAPI_TOKEN
+ARG STRAPI_MEDIA_URL
 
+# Si Strapi est injoignable, le build échoue et l'image en service
+# n'est pas remplacée.
 RUN npm run build
 
 # --- Étape 2 : service des fichiers statiques ---
 FROM nginx:stable-alpine
 
-COPY --from=build /app/build /usr/share/nginx/html
+COPY --from=build /app/dist /usr/share/nginx/html
 
 RUN chmod -R 755 /usr/share/nginx/html && \
     chown -R nginx:nginx /usr/share/nginx/html
