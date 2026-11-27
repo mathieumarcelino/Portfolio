@@ -1,6 +1,7 @@
 // Client Strapi utilisé uniquement pendant le build (pages statiques).
 // Le token ne quitte jamais la machine de build.
 import { STRAPI_MEDIA_URL, STRAPI_TOKEN, STRAPI_URL } from 'astro:env/server';
+import type { ImageData, StrapiMedia } from './types';
 
 const API_URL = STRAPI_URL.replace(/\/$/, '');
 const MEDIA_URL = (STRAPI_MEDIA_URL ?? STRAPI_URL).replace(/\/$/, '');
@@ -45,4 +46,14 @@ export async function fetchStrapi<T>(path: string, params: Params = {}): Promise
 export function resolveMediaUrl(url: string | null | undefined): string | null {
   if (!url) return null;
   return /^https?:\/\//.test(url) ? url : `${MEDIA_URL}${url}`;
+}
+
+/** Média Strapi -> image avec URL absolue et dimensions (null si absent). */
+export function resolveImage(media: StrapiMedia | null | undefined): ImageData | null {
+  const src = resolveMediaUrl(media?.url);
+  if (!media || !src) return null;
+  const isSvg = media.mime === 'image/svg+xml' || /\.svg(\?|$)/i.test(media.url);
+  // Strapi fournit toujours les dimensions des images matricielles ; valeur
+  // carrée par défaut pour un SVG sans dimensions.
+  return { src, width: media.width ?? 100, height: media.height ?? 100, isSvg };
 }

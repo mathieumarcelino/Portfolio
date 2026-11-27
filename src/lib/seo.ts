@@ -96,7 +96,7 @@ export function buildSeo(data: PageData, site: URL): Seo {
     url: pageUrl,
     email: `mailto:${profile.email}`,
     ...(profile.job && { jobTitle: profile.job }),
-    ...(profile.image && { image: profile.image }),
+    ...(profile.image && { image: profile.image.src }),
     ...(description && { description }),
     ...(current?.place && {
       worksFor: {

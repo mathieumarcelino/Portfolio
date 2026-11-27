@@ -2,8 +2,9 @@
 
 export interface StrapiMedia {
   url: string;
-  width?: number;
-  height?: number;
+  width?: number | null;
+  height?: number | null;
+  mime?: string | null;
 }
 
 export interface StrapiLocale {
@@ -57,6 +58,15 @@ export interface StrapiProject {
 
 // --- Données consommées par les composants ---
 
+/** Image Strapi prête à l'emploi : URL absolue et dimensions d'origine. */
+export interface ImageData {
+  src: string;
+  width: number;
+  height: number;
+  /** Les SVG sont servis tels quels (pas de conversion). */
+  isSvg: boolean;
+}
+
 export type Translator = (key: string) => string;
 
 export interface LocaleData {
@@ -71,7 +81,7 @@ export interface ProfileData {
   fullName: string;
   job: string;
   email: string;
-  image: string | null;
+  image: ImageData | null;
   /** Description du profil, déjà convertie de Markdown en HTML au build. */
   descriptionHtml: string;
 }
@@ -91,7 +101,7 @@ export interface TimelineData {
   isCurrent: boolean;
   description: string[];
   isList: boolean;
-  logo: string | null;
+  logo: ImageData | null;
 }
 
 export interface ProjectData {
@@ -102,7 +112,7 @@ export interface ProjectData {
   linkLabel: string | null;
   /** URL complète du projet, ou null. */
   href: string | null;
-  image: string | null;
+  image: ImageData | null;
   github: { name: string | null; url: string }[];
   languages: { name: string; boxColor: string; textColor: string }[];
 }

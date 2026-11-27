@@ -1,12 +1,57 @@
 // @ts-check
-import { defineConfig, envField } from 'astro/config';
+import process from 'node:process';
+import { URL } from 'node:url';
+import { defineConfig, envField, fontProviders } from 'astro/config';
+import { loadEnv } from 'vite';
+
+// Domaine des médias Strapi : seules les images de ce domaine sont
+// téléchargées et optimisées au build (.env en local, args Docker en prod).
+const env = { ...loadEnv(process.env.NODE_ENV ?? 'production', process.cwd(), ''), ...process.env };
+const mediaUrl = new URL(env.STRAPI_MEDIA_URL || env.STRAPI_URL || 'http://localhost:1337');
 
 export default defineConfig({
   site: 'https://mathi3u.com',
   output: 'static',
 
+  image: {
+    remotePatterns: [
+      {
+        protocol: mediaUrl.protocol.replace(':', ''),
+        hostname: mediaUrl.hostname,
+        ...(mediaUrl.port && { port: mediaUrl.port }),
+      },
+    ],
+  },
+
+  // Police auto-hébergée depuis le paquet npm (aucun appel réseau, ni au build
+  // ni chez le visiteur). Astro génère aussi une police de secours aux
+  // métriques ajustées pour limiter le décalage au chargement (CLS).
+  fonts: [
+    {
+      provider: fontProviders.local(),
+      name: 'Parkinsans',
+      cssVariable: '--font-parkinsans',
+      fallbacks: ['system-ui', 'sans-serif'],
+      options: {
+        variants: [
+          {
+            src: ['./node_modules/@fontsource-variable/parkinsans/files/parkinsans-latin-wght-normal.woff2'],
+            weight: '300 800',
+            style: 'normal',
+          },
+        ],
+      },
+    },
+  ],
+
   // Nom lisible pour la feuille de style générée : sans cela, elle hérite du
   // nom de la route [...lang] et devient « _..<hash>.css ».
+  build: {
+    // CSS intégré dans chaque page (environ 5,5 ko compressés) : aucune
+    // requête bloquante avant le premier affichage.
+    inlineStylesheets: 'always',
+  },
+
   vite: {
     build: {
       rollupOptions: {

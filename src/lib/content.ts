@@ -1,7 +1,7 @@
 // Récupération et mise en forme des données Strapi pour une page de langue.
 import { marked } from 'marked';
 import { createTranslator, formatPeriod, toLocales } from './i18n';
-import { fetchStrapi, resolveMediaUrl } from './strapi';
+import { fetchStrapi, resolveImage } from './strapi';
 import type {
   LocaleData,
   PageData,
@@ -42,7 +42,7 @@ function mapTimeline(items: StrapiTimeline[], type: TimelineData['type'], locale
     isCurrent: e.isCurrent,
     description: (e.achievements ?? []).map((a) => a.value),
     isList: e.isList,
-    logo: resolveMediaUrl(e.logo?.url),
+    logo: resolveImage(e.logo),
   }));
 }
 
@@ -55,7 +55,7 @@ function mapProjects(items: StrapiProject[]): ProjectData[] {
       year: p.date.substring(0, 4),
       linkLabel,
       href: p.url ? (/^https?:\/\//.test(p.url) ? p.url : `https://${p.url}`) : null,
-      image: resolveMediaUrl(p.image?.url),
+      image: resolveImage(p.image),
       github: p.github ?? [],
       languages: (p.languages ?? []).map(({ name, boxColor, textColor }) => ({ name, boxColor, textColor })),
     };
@@ -91,7 +91,7 @@ export async function getPageData(locale: LocaleData, locales: LocaleData[]): Pr
       fullName: `${profile.firstName} ${profile.lastName}`,
       job: profile.job ?? '',
       email: profile.email,
-      image: resolveMediaUrl(profile.image?.url),
+      image: resolveImage(profile.image),
       // Contenu saisi dans notre propre CMS : rendu Markdown au build.
       // trim() : le saut de ligne final de marked créerait une ligne vide
       // (le conteneur est en white-space: pre-line).

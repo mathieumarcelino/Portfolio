@@ -1,0 +1,71 @@
+---
+// Image Strapi optimisée au build : téléchargée, convertie en WebP et
+// redimensionnée (srcset), avec width/height pour réserver la place (CLS).
+// Les SVG sont servis tels quels.
+import { Image } from 'astro:assets';
+import type { ImageData } from '../lib/types';
+
+interface Props {
+  image: ImageData;
+  alt: string;
+  class?: string;
+  /** Largeur ou hauteur d'affichage en px CSS (l'autre est déduite du ratio). */
+  width?: number;
+  height?: number;
+  /** Largeurs générées pour une image responsive (avec sizes). */
+  widths?: number[];
+  sizes?: string;
+  /** Densités générées pour une image de taille fixe (ex. [1, 2]). */
+  densities?: number[];
+  loading?: 'lazy' | 'eager';
+  fetchpriority?: 'high' | 'low' | 'auto';
+}
+
+const { image, alt, class: className, widths, sizes, densities, loading = 'lazy', fetchpriority } = Astro.props;
+
+const ratio = image.width / image.height;
+const width = Astro.props.width ?? Math.round((Astro.props.height ?? image.height) * ratio);
+const height = Astro.props.height ?? Math.round(width / ratio);
+---
+
+{
+  image.isSvg ? (
+    <img
+      src={image.src}
+      alt={alt}
+      class={className}
+      width={width}
+      height={height}
+      loading={loading}
+      decoding="async"
+      fetchpriority={fetchpriority}
+    />
+  ) : widths ? (
+    <Image
+      src={image.src}
+      alt={alt}
+      class={className}
+      width={width}
+      height={height}
+      widths={widths}
+      sizes={sizes ?? `${width}px`}
+      format="webp"
+      loading={loading}
+      decoding="async"
+      fetchpriority={fetchpriority}
+    />
+  ) : (
+    <Image
+      src={image.src}
+      alt={alt}
+      class={className}
+      width={width}
+      height={height}
+      densities={densities ?? [1, 2]}
+      format="webp"
+      loading={loading}
+      decoding="async"
+      fetchpriority={fetchpriority}
+    />
+  )
+}

@@ -2,6 +2,7 @@
 import './Timeline.css';
 import { faAward, faBuilding } from '@fortawesome/free-solid-svg-icons';
 import { iconSvg } from '../../lib/icons';
+import StrapiImage from '../StrapiImage.astro';
 import type { TimelineData, Translator } from '../../lib/types';
 
 interface Props {
@@ -27,7 +28,14 @@ const { type, items, t } = Astro.props;
             <div class="timeline-line" />
             <div class="timeline-round">
               {item.logo ? (
-                <img class="timeline-round-image" src={item.logo} alt={`Logo ${item.name}`} />
+                <StrapiImage
+                  image={item.logo}
+                  alt={`Logo ${item.name}`}
+                  class="timeline-round-image"
+                  width={18}
+                  densities={[1, 2, 3]}
+                  loading="eager"
+                />
               ) : (
                 <Fragment set:html={iconSvg(type === 'experience' ? faBuilding : faAward)} />
               )}

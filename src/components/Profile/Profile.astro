@@ -2,6 +2,7 @@
 import './Profile.css';
 import { faEnvelope, faFile } from '@fortawesome/free-solid-svg-icons';
 import { iconSvg, socialIcon } from '../../lib/icons';
+import StrapiImage from '../StrapiImage.astro';
 import type { LinkData, ProfileData, Translator } from '../../lib/types';
 
 interface Props {
@@ -22,7 +23,19 @@ const { profile, links, t } = Astro.props;
         <div class="card-image-mask-1"></div>
         <div class="card-image-mask-2"></div>
         <div class="card-image-mask-3"></div>
-        {profile.image && <img src={profile.image} alt={profile.fullName} class="card-image" />}
+        {
+          profile.image && (
+            // Affiché à 87 px de haut (Profile.css) ; probable élément LCP : chargé en priorité.
+            <StrapiImage
+              image={profile.image}
+              alt={profile.fullName}
+              class="card-image"
+              height={87}
+              loading="eager"
+              fetchpriority="high"
+            />
+          )
+        }
       </div>
       <div class="card-text-cont">
         <h1 class="text-2 spacer-1">{profile.fullName}</h1>
