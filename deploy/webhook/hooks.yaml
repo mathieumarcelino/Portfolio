@@ -1,0 +1,16 @@
+# Configuration de webhook (chargée avec -template pour lire le secret
+# depuis la variable d'environnement WEBHOOK_SECRET).
+- id: rebuild
+  execute-command: /usr/local/bin/trigger.sh
+  command-working-directory: /srv/portfolio
+  http-methods: [POST]
+  response-message: "Rebuild planifié."
+  trigger-rule-mismatch-http-response-code: 403
+  # Seules les requêtes portant le bon secret déclenchent un rebuild.
+  trigger-rule:
+    match:
+      type: value
+      value: '{{ getenv "WEBHOOK_SECRET" }}'
+      parameter:
+        source: header
+        name: X-Webhook-Secret

@@ -26,6 +26,24 @@ services:
     networks:
       - proxy
 
+  # Reçoit le webhook « Publier » de Strapi et reconstruit portfolio-app.
+  # Joignable uniquement sur le réseau Docker interne « proxy » (aucun port
+  # publié) : http://portfolio-webhook:9000/hooks/rebuild
+  portfolio-webhook:
+    container_name: portfolio-webhook
+    restart: unless-stopped
+    build: ./deploy/webhook
+    environment:
+      WEBHOOK_SECRET: ${WEBHOOK_SECRET:?définir WEBHOOK_SECRET dans .env (openssl rand -hex 32)}
+      DEBOUNCE_SECONDS: ${REBUILD_DEBOUNCE_SECONDS:-30}
+    volumes:
+      # Accès au démon Docker pour lancer le build (équivalent root sur l'hôte)
+      - /var/run/docker.sock:/var/run/docker.sock
+      # Le projet, en lecture seule : contexte de build et .env
+      - ./:/srv/portfolio:ro
+    networks:
+      - proxy
+
 secrets:
   # Token Strapi transmis au build comme secret BuildKit (variable STRAPI_TOKEN du .env)
   strapi_token:
