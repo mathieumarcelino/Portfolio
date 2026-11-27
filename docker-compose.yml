@@ -17,5 +17,3 @@ services:
         REACT_APP_STRAPI_TOKEN: ${REACT_APP_STRAPI_TOKEN:-}
     networks:
       - proxy
-    volumes:
-      - ./public:/var/www/public:ro
