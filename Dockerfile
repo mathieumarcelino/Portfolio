@@ -17,6 +17,12 @@ COPY . .
 ARG STRAPI_URL
 ARG STRAPI_MEDIA_URL
 
+# Le contenu vient de Strapi, pas des fichiers copiés : sans cette valeur
+# changeante, BuildKit réutiliserait le résultat en cache de npm run build
+# et republierait l'ancien contenu. Le rebuild automatique lui donne
+# l'horodatage courant (npm ci, plus haut, reste en cache).
+ARG CACHE_BUST
+
 # Le token est un secret BuildKit : il n'existe que le temps de cette
 # commande et n'apparaît ni dans l'historique ni dans le cache de l'image.
 # Si Strapi est injoignable, le build échoue et l'image en service

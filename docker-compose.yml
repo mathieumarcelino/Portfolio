@@ -17,6 +17,10 @@ services:
       args:
         STRAPI_URL: ${STRAPI_URL}
         STRAPI_MEDIA_URL: ${STRAPI_MEDIA_URL:-}
+        # Valeur changeante pour forcer la régénération du contenu
+        # (voir Dockerfile) : fournie par le rebuild automatique, ou à la main
+        # avec CACHE_BUST=$(date +%s) docker compose up -d --build
+        CACHE_BUST: ${CACHE_BUST:-}
       secrets:
         - strapi_token
     networks:
