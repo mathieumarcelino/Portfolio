@@ -1,0 +1,20 @@
+# Réinstallés par npm ci dans l'image
+node_modules
+
+# Générés
+build
+coverage
+npm-debug.log*
+
+# Secrets et configuration locale : les variables de build passent
+# par les args de docker-compose.yml, jamais par un fichier copié
+.env
+.env.*
+
+# Inutiles au build
+.git
+.gitignore
+.dockerignore
+.vscode
+.idea
+*.md
