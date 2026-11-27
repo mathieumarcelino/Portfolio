@@ -46,4 +46,10 @@ The only client-side JS is two small inline scripts: closing the language `<deta
 
 ## Deployment
 
-`Dockerfile` (multi-stage): `npm ci && npm run build` with `STRAPI_*` passed as build args (from the `.env` next to `docker-compose.yml`), then `dist/` served by `nginx.conf`. nginx serves `/_astro/` (hashed) as immutable, and all HTML as `no-cache`. `docker-compose.yml` joins the external `proxy` network (Nginx Proxy Manager).
+`Dockerfile` (multi-stage): `npm ci && npm run build` with `STRAPI_URL` as a build arg and `STRAPI_TOKEN` as a **BuildKit secret** (from the `.env` next to `docker-compose.yml`), then `dist/` served by `nginx.conf`. A `CACHE_BUST` build arg sits right before `npm run build`: content comes from Strapi, not from the repo, so without a changing value BuildKit would reuse the cached build and republish stale content. nginx serves `/_astro/` (hashed) as immutable, and all HTML as `no-cache`.
+
+`docker-compose.yml` (project name pinned to `portfolio`, external `proxy` network shared with Nginx Proxy Manager and the Strapi container) has two services:
+- `portfolio-app`: the nginx site.
+- `portfolio-webhook` (`deploy/webhook/`): receives the Strapi publish webhook on the internal network only (`http://portfolio-webhook:9000/hooks/rebuild`, `X-Webhook-Secret` header). Through the mounted Docker socket it runs `docker compose build portfolio-app && up -d`, debouncing bursts with a lock. It never runs `git pull`: code deploys stay manual.
+
+Setup and operations: `deploy/README.md`.
