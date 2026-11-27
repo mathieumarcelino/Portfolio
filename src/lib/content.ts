@@ -24,6 +24,13 @@ export async function getLocales(): Promise<LocaleData[]> {
   return locales;
 }
 
+/** Traductions d'interface d'une langue (pour les pages sans contenu, ex. 404). */
+export async function getTranslator(code: string): Promise<Translator> {
+  return createTranslator(
+    await fetchStrapi<StrapiTranslation[]>('translations', { locale: code, 'pagination[pageSize]': PAGE_SIZE }),
+  );
+}
+
 function mapTimeline(items: StrapiTimeline[], type: TimelineData['type'], locale: string, t: Translator): TimelineData[] {
   return items.map((e) => ({
     type,
@@ -32,6 +39,7 @@ function mapTimeline(items: StrapiTimeline[], type: TimelineData['type'], locale
     url: e.url,
     detail: e.detail,
     period: formatPeriod(e.beginning, e.ending, e.isCurrent, e.isYearly, locale, t),
+    isCurrent: e.isCurrent,
     description: (e.achievements ?? []).map((a) => a.value),
     isList: e.isList,
     logo: resolveMediaUrl(e.logo?.url),

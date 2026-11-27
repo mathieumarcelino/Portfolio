@@ -88,6 +88,7 @@ export interface TimelineData {
   url: string | null;
   detail: string | null;
   period: string;
+  isCurrent: boolean;
   description: string[];
   isList: boolean;
   logo: string | null;

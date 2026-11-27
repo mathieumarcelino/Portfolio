@@ -5,6 +5,19 @@ export default defineConfig({
   site: 'https://mathi3u.com',
   output: 'static',
 
+  // Nom lisible pour la feuille de style générée : sans cela, elle hérite du
+  // nom de la route [...lang] et devient « _..<hash>.css ».
+  vite: {
+    build: {
+      rollupOptions: {
+        output: {
+          assetFileNames: (asset) =>
+            (asset.names?.[0] ?? '').endsWith('.css') ? '_astro/styles.[hash][extname]' : '_astro/[name].[hash][extname]',
+        },
+      },
+    },
+  },
+
   // Variables lues uniquement au build (context: 'server') : elles ne sont
   // jamais incluses dans les fichiers servis aux visiteurs.
   env: {

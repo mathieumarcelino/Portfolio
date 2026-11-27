@@ -1,0 +1,42 @@
+---
+// Page 404, servie par nginx pour toute URL inconnue (avec le statut 404).
+// Dans la langue par défaut ; textes traduisibles dans Strapi
+// (clés « Page not found » et « Back to home »).
+import Base from '../layouts/Base.astro';
+import Footer from '../components/Footer/Footer.astro';
+import Nav from '../components/Nav/Nav.astro';
+import { getLocales, getTranslator } from '../lib/content';
+import { toOgLocale } from '../lib/seo';
+
+const locales = await getLocales();
+const locale = locales.find((l) => l.isDefault) ?? locales[0];
+const t = await getTranslator(locale.code);
+const message = t('Page not found');
+---
+
+<Base
+  lang={locale.code}
+  title={`404 | ${message}`}
+  description={message}
+  imageAlt="mathi3u.com"
+  ogLocale={toOgLocale(locale.code)}
+  noindex
+>
+  <div class="main">
+    <div class="el-1">
+      <Nav current={locale} locales={locales} />
+    </div>
+    <div class="el-1">
+      <section class="b-1">
+        <div class="cont-title">
+          <h1 class="text-1">404</h1>
+        </div>
+        <p class="text-4 spacer-2">{message}</p>
+        <a class="text-4 link" href={locale.path}>{t('Back to home')}</a>
+      </section>
+    </div>
+    <div class="el-1">
+      <Footer t={t} />
+    </div>
+  </div>
+</Base>
