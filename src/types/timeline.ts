@@ -9,7 +9,7 @@ export interface StrapiTimeline {
     documentId: string;
     name: string;
     place: string;
-    url: string;
+    url: string | null;
     detail: string;
     beginning: string;
     ending: string | null;
@@ -27,7 +27,7 @@ export interface TimelineData {
     type: 'experience' | 'education';
     name: string;
     place: string;
-    url: string;
+    url: string | null;
     detail: string;
     description: string[];
     isList: boolean;
