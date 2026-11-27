@@ -1,4 +1,6 @@
 // @ts-check
+import process from 'node:process';
+import { URL } from 'node:url';
 import { defineConfig, envField, fontProviders } from 'astro/config';
 import { loadEnv } from 'vite';
 
