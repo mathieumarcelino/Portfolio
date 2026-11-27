@@ -32,6 +32,7 @@ function mapTimeline(items: StrapiTimeline[], type: TimelineData['type'], locale
     url: e.url,
     detail: e.detail,
     period: formatPeriod(e.beginning, e.ending, e.isCurrent, e.isYearly, locale, t),
+    isCurrent: e.isCurrent,
     description: (e.achievements ?? []).map((a) => a.value),
     isList: e.isList,
     logo: resolveMediaUrl(e.logo?.url),

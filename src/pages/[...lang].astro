@@ -8,6 +8,7 @@ import Profile from '../components/Profile/Profile.astro';
 import Project from '../components/Project/Project.astro';
 import Timeline from '../components/Timeline/Timeline.astro';
 import { getLocales, getPageData } from '../lib/content';
+import { buildSeo } from '../lib/seo';
 
 export async function getStaticPaths() {
   const locales = await getLocales();
@@ -18,10 +19,21 @@ export async function getStaticPaths() {
 }
 
 const { locale, locales } = Astro.props;
-const { t, profile, links, experiences, educations, projects } = await getPageData(locale, locales);
+const data = await getPageData(locale, locales);
+const { t, profile, links, experiences, educations, projects } = data;
+const seo = buildSeo(data, Astro.site!);
 ---
 
-<Base lang={locale.code}>
+<Base
+  lang={locale.code}
+  title={seo.title}
+  description={seo.description}
+  imageAlt={seo.imageAlt}
+  ogLocale={seo.ogLocale}
+  ogLocaleAlternates={seo.ogLocaleAlternates}
+  alternates={seo.alternates}
+  jsonLd={seo.jsonLd}
+>
   <div class="main">
     <div class="el-1">
       <Nav current={locale} locales={locales} />
