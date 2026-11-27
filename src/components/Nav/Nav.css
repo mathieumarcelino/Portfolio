@@ -102,6 +102,29 @@
     display: inline-block;
 }
 
+/* Menu en <details>/<summary> avec des liens : même rendu que l'ancien
+   bouton et ses options. */
+.nav-select-button {
+    display: block;
+    list-style: none;
+    /* Un <button> est en border-box par défaut, pas un <summary>. */
+    box-sizing: border-box;
+}
+
+.nav-select-button::-webkit-details-marker {
+    display: none;
+}
+
+a.nav-select-item {
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+.nav-select-item[aria-current="page"] {
+    background: #eef0ff;
+    color: #5352ed;
+}
+
 @media screen and (min-width: 1024px) and (max-width: 1440px) {
 
 }

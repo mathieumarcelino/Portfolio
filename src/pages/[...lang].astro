@@ -1,0 +1,43 @@
+---
+// Une page statique par langue déclarée dans Strapi :
+// la langue par défaut (isDefault) à la racine "/", les autres sous "/<code>/".
+import Base from '../layouts/Base.astro';
+import Footer from '../components/Footer/Footer.astro';
+import Nav from '../components/Nav/Nav.astro';
+import Profile from '../components/Profile/Profile.astro';
+import Project from '../components/Project/Project.astro';
+import Timeline from '../components/Timeline/Timeline.astro';
+import { getLocales, getPageData } from '../lib/content';
+
+export async function getStaticPaths() {
+  const locales = await getLocales();
+  return locales.map((locale) => ({
+    params: { lang: locale.isDefault ? undefined : locale.code },
+    props: { locale, locales },
+  }));
+}
+
+const { locale, locales } = Astro.props;
+const { t, profile, links, experiences, educations, projects } = await getPageData(locale, locales);
+---
+
+<Base lang={locale.code}>
+  <div class="main">
+    <div class="el-1">
+      <Nav current={locale} locales={locales} />
+    </div>
+    <div class="el-1">
+      <Profile profile={profile} links={links} t={t} />
+    </div>
+    <div class="el-2">
+      <Timeline type="experience" items={experiences} t={t} />
+      <Timeline type="education" items={educations} t={t} />
+    </div>
+    <div class="el-1">
+      <Project projects={projects} t={t} />
+    </div>
+    <div class="el-1">
+      <Footer t={t} />
+    </div>
+  </div>
+</Base>

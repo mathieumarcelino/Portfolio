@@ -1,0 +1,16 @@
+---
+import './Footer.css';
+import type { Translator } from '../../lib/types';
+
+interface Props {
+  t: Translator;
+}
+
+const { t } = Astro.props;
+---
+
+<section class="b-1">
+  <div class="footer">
+    <p class="footer-text text-4">{t('Developed by mathi3u.com')}</p>
+  </div>
+</section>

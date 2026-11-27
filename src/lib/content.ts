@@ -85,7 +85,9 @@ export async function getPageData(locale: LocaleData, locales: LocaleData[]): Pr
       email: profile.email,
       image: resolveMediaUrl(profile.image?.url),
       // Contenu saisi dans notre propre CMS : rendu Markdown au build.
-      descriptionHtml: profile.description ? await marked.parse(profile.description) : '',
+      // trim() : le saut de ligne final de marked créerait une ligne vide
+      // (le conteneur est en white-space: pre-line).
+      descriptionHtml: profile.description ? (await marked.parse(profile.description)).trim() : '',
     },
     links: links.map(({ name, url }) => ({ name, url })),
     experiences: mapTimeline(experiences, 'experience', code, t),

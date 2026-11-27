@@ -1,0 +1,97 @@
+---
+import './Project.css';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import { faLink } from '@fortawesome/free-solid-svg-icons';
+import { iconSvg } from '../../lib/icons';
+import type { ProjectData, Translator } from '../../lib/types';
+
+interface Props {
+  projects: ProjectData[];
+  t: Translator;
+}
+
+const { projects, t } = Astro.props;
+---
+
+<section class="b-1">
+  <div class="cont-title">
+    <h2 class="text-1">{t('Projects')}</h2>
+  </div>
+  <div class="project-item-cont">
+    {
+      projects.map((project) => (
+        <div class="project-item" data-href={project.href ?? undefined}>
+          <div class="project-image-cont">
+            {project.image ? (
+              <img class="project-image" src={project.image} alt={`Demo ${project.name}`} />
+            ) : (
+              <div class="project-image-default" set:html={iconSvg(faLink)} />
+            )}
+            {project.github.length > 0 && (
+              <div class="project-github-cont">
+                {project.github.map((repo) => (
+                  <a
+                    href={repo.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    class="project-github"
+                    title={`GitHub${repo.name ? ` - ${repo.name}` : ''}`}
+                  >
+                    <Fragment set:html={iconSvg(faGithub)} />
+                    {repo.name && <span>{repo.name}</span>}
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
+          <div class="project-text-cont">
+            <div>
+              <h3 class="text-2 spacer-1 ellipsis">{project.name}</h3>
+              <p class="text-3 spacer-2">{project.year}</p>
+              <p class="text-4 spacer-2">{project.description}</p>
+            </div>
+            <div class="project-text-sub-cont">
+              <div class="project-link-cont spacer-1">
+                {project.href && (
+                  <a
+                    class="text-4 link project-link"
+                    href={project.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title={project.name}
+                  >
+                    {project.linkLabel}
+                  </a>
+                )}
+              </div>
+              {project.languages.length > 0 && (
+                <div class="project-language-cont">
+                  {project.languages.map((language) => (
+                    <p
+                      class="project-language-text"
+                      style={{ backgroundColor: language.boxColor, color: language.textColor }}
+                    >
+                      {language.name}
+                    </p>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<script>
+  // Comportement de l'ancienne version : clic sur la carte = ouverture du
+  // projet dans un nouvel onglet (les liens internes gardent leur action).
+  // L'accessibilité de ce motif est revue au lot 6 (D2).
+  for (const card of document.querySelectorAll<HTMLElement>('.project-item[data-href]')) {
+    card.addEventListener('click', (event) => {
+      if ((event.target as Element).closest('a')) return;
+      window.open(card.dataset.href, '_blank', 'noopener');
+    });
+  }
+</script>
