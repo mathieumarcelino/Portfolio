@@ -5,6 +5,7 @@ import '../styles/index.css';
 import '../styles/reset.css';
 import '../styles/App.css';
 import '@fortawesome/fontawesome-svg-core/styles.css';
+import { Font } from 'astro:assets';
 import type { Alternate } from '../lib/seo';
 
 interface Props {
@@ -50,6 +51,7 @@ const jsonLdText = jsonLd ? JSON.stringify(jsonLd).replace(/</g, '\\u003c') : nu
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
+    <Font cssVariable="--font-parkinsans" preload />
     <meta name="description" content={description} />
     {noindex && <meta name="robots" content="noindex" />}
     {!noindex && <link rel="canonical" href={pageUrl} />}

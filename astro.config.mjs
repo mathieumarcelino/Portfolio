@@ -1,9 +1,30 @@
 // @ts-check
-import { defineConfig, envField } from 'astro/config';
+import { defineConfig, envField, fontProviders } from 'astro/config';
 
 export default defineConfig({
   site: 'https://mathi3u.com',
   output: 'static',
+
+  // Police auto-hébergée depuis le paquet npm (aucun appel réseau, ni au build
+  // ni chez le visiteur). Astro génère aussi une police de secours aux
+  // métriques ajustées pour limiter le décalage au chargement (CLS).
+  fonts: [
+    {
+      provider: fontProviders.local(),
+      name: 'Parkinsans',
+      cssVariable: '--font-parkinsans',
+      fallbacks: ['system-ui', 'sans-serif'],
+      options: {
+        variants: [
+          {
+            src: ['./node_modules/@fontsource-variable/parkinsans/files/parkinsans-latin-wght-normal.woff2'],
+            weight: '300 800',
+            style: 'normal',
+          },
+        ],
+      },
+    },
+  ],
 
   // Nom lisible pour la feuille de style générée : sans cela, elle hérite du
   // nom de la route [...lang] et devient « _..<hash>.css ».

@@ -1,8 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Parkinsans:wght@300..800&display=swap');
-
 body{
   background: #f1f2f6;
-  font-family: "Parkinsans", serif;
+  font-family: var(--font-parkinsans);
   font-optical-sizing: auto;
   font-style: normal;
 }
