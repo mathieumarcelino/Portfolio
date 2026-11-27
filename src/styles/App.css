@@ -100,6 +100,9 @@ body{
 }
 
 .text-separator{
+  /* « ● » n'existe pas dans Parkinsans : sans cela, il serait pris dans la
+     police de secours ajustée (Arial agrandie) et paraîtrait plus gros. */
+  font-family: serif;
   color: #57606f;
   margin: 0 8px;
   font-size: 10px;
