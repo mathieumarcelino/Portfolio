@@ -3,6 +3,7 @@ import './Project.css';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faLink } from '@fortawesome/free-solid-svg-icons';
 import { iconSvg } from '../../lib/icons';
+import StrapiImage from '../StrapiImage.astro';
 import type { ProjectData, Translator } from '../../lib/types';
 
 interface Props {
@@ -23,7 +24,14 @@ const { projects, t } = Astro.props;
         <div class="project-item" data-href={project.href ?? undefined}>
           <div class="project-image-cont">
             {project.image ? (
-              <img class="project-image" src={project.image} alt={`Demo ${project.name}`} />
+              <StrapiImage
+                image={project.image}
+                alt={`Demo ${project.name}`}
+                class="project-image"
+                width={960}
+                widths={[320, 480, 640, 960]}
+                sizes="(max-width: 600px) 40vw, (max-width: 1024px) 50vw, (max-width: 1440px) 30vw, 25vw"
+              />
             ) : (
               <div class="project-image-default" set:html={iconSvg(faLink)} />
             )}
