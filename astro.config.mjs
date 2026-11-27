@@ -46,6 +46,12 @@ export default defineConfig({
 
   // Nom lisible pour la feuille de style générée : sans cela, elle hérite du
   // nom de la route [...lang] et devient « _..<hash>.css ».
+  build: {
+    // CSS intégré dans chaque page (environ 5,5 ko compressés) : aucune
+    // requête bloquante avant le premier affichage.
+    inlineStylesheets: 'always',
+  },
+
   vite: {
     build: {
       rollupOptions: {
