@@ -4,7 +4,7 @@ import { useLanguage } from '../../../contexts/LanguageContext';
 interface TimelineTitleProps {
   name: string;
   place: string;
-  url: string;
+  url: string | null;
 }
 
 const TimelineTitle: React.FC<TimelineTitleProps> = ({ name, place, url }) => {
