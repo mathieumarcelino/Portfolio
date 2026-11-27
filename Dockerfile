@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:1
 # --- Étape 1 : génération du site statique (Astro) ---
 FROM node:22-alpine AS build
 
@@ -11,15 +12,17 @@ RUN npm ci --no-audit --no-fund
 COPY . .
 
 # Variables lues par Astro au moment du build pour interroger Strapi.
-# Elles ne sont utilisées que dans cette étape : ni le site généré ni
-# l'image finale ne les contiennent. Fournies par docker-compose.yml.
+# Fournies par docker-compose.yml ; ni le site généré ni l'image finale
+# ne les contiennent.
 ARG STRAPI_URL
-ARG STRAPI_TOKEN
 ARG STRAPI_MEDIA_URL
 
+# Le token est un secret BuildKit : il n'existe que le temps de cette
+# commande et n'apparaît ni dans l'historique ni dans le cache de l'image.
 # Si Strapi est injoignable, le build échoue et l'image en service
 # n'est pas remplacée.
-RUN npm run build
+RUN --mount=type=secret,id=strapi_token,env=STRAPI_TOKEN \
+    npm run build
 
 # --- Étape 2 : service des fichiers statiques ---
 FROM nginx:stable-alpine

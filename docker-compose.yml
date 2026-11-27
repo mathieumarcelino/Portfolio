@@ -1,4 +1,6 @@
-version: '3.8'
+# Nom de projet figé : le service portfolio-webhook pilote ce même projet
+# depuis son conteneur.
+name: portfolio
 
 networks:
   proxy:
@@ -14,7 +16,13 @@ services:
       # Variables de build (accès à Strapi), lues dans le .env à côté de ce fichier
       args:
         STRAPI_URL: ${STRAPI_URL}
-        STRAPI_TOKEN: ${STRAPI_TOKEN:-}
         STRAPI_MEDIA_URL: ${STRAPI_MEDIA_URL:-}
+      secrets:
+        - strapi_token
     networks:
       - proxy
+
+secrets:
+  # Token Strapi transmis au build comme secret BuildKit (variable STRAPI_TOKEN du .env)
+  strapi_token:
+    environment: STRAPI_TOKEN
