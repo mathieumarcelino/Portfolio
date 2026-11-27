@@ -1,0 +1,58 @@
+---
+import './Profile.css';
+import { faEnvelope, faFile } from '@fortawesome/free-solid-svg-icons';
+import { iconSvg, socialIcon } from '../../lib/icons';
+import type { LinkData, ProfileData, Translator } from '../../lib/types';
+
+interface Props {
+  profile: ProfileData;
+  links: LinkData[];
+  t: Translator;
+}
+
+const { profile, links, t } = Astro.props;
+---
+
+<section class="b-1">
+  <div class="profile-cont">
+    <div class="card-cont">
+      <div class="card-image-cont spacer-2">
+        <div class="card-image-background"></div>
+        <div class="card-image-border"></div>
+        <div class="card-image-mask-1"></div>
+        <div class="card-image-mask-2"></div>
+        <div class="card-image-mask-3"></div>
+        {profile.image && <img src={profile.image} alt={profile.fullName} class="card-image" />}
+      </div>
+      <div class="card-text-cont">
+        <h1 class="text-2 spacer-1">{profile.fullName}</h1>
+        <h2 class="text-3 spacer-1">{profile.job}</h2>
+        <a href={`mailto:${profile.email}`} class="text-4 spacer-2 link">{profile.email}</a>
+        <div class="card-links-cont">
+          {
+            links.map((link) => (
+              <a href={link.url} target="_blank" rel="noreferrer" class="card-links-link">
+                <Fragment set:html={iconSvg(socialIcon(link.name), ['link'])} />
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+    <div class="quote-cont">
+      <div class="quote-text-cont">
+        <div class="text-quote spacer-2" set:html={profile.descriptionHtml} />
+      </div>
+      <div class="quote-button-cont">
+        <a href={`mailto:${profile.email}`} target="_blank" rel="noreferrer" class="button-quote btn">
+          <span>{t('Contact')}</span>
+          <Fragment set:html={iconSvg(faEnvelope)} />
+        </a>
+        <a href="https://cv.mathi3u.com/" target="_blank" rel="noreferrer" class="button-quote btn">
+          <span>{t('CV')}</span>
+          <Fragment set:html={iconSvg(faFile)} />
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

@@ -15,9 +15,10 @@ strapi/node_modules/
 strapi/.env
 
 # ========================
-# React (CRA) build output
+# Build (Astro)
 # ========================
-/build
+/dist
+/.astro
 
 # ========================
 # Strapi

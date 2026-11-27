@@ -1,0 +1,54 @@
+---
+// Sélecteur de langue : chaque langue est une page statique, le menu
+// contient donc de simples liens (plus de rechargement des données).
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { iconSvg } from '../../lib/icons';
+import type { LocaleData } from '../../lib/types';
+
+interface Props {
+  current: LocaleData;
+  locales: LocaleData[];
+}
+
+const { current, locales } = Astro.props;
+---
+
+<details class="select-wrapper custom-select" data-language-select>
+  <summary class="nav-select nav-select-button" aria-label="Choose language">
+    {current.name}
+    <span class="select-arrow" aria-hidden="true">▾</span>
+  </summary>
+  <ul class="nav-select-menu">
+    {
+      locales.map((locale) => (
+        <li>
+          <a
+            class="nav-select-item"
+            href={locale.path}
+            hreflang={locale.code}
+            lang={locale.code}
+            aria-current={locale.code === current.code ? 'page' : undefined}
+          >
+            {locale.name}
+            {locale.code === current.code && <span class="check" aria-hidden="true" set:html={iconSvg(faCheck)} />}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</details>
+
+<script>
+  // Comportement de l'ancien menu : fermeture au clic extérieur et avec Échap.
+  for (const menu of document.querySelectorAll<HTMLDetailsElement>('[data-language-select]')) {
+    document.addEventListener('click', (event) => {
+      if (menu.open && !menu.contains(event.target as Node)) menu.open = false;
+    });
+    menu.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && menu.open) {
+        menu.open = false;
+        menu.querySelector('summary')?.focus();
+      }
+    });
+  }
+</script>

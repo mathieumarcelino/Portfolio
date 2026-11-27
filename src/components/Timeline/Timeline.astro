@@ -1,0 +1,80 @@
+---
+import './Timeline.css';
+import { faAward, faBuilding } from '@fortawesome/free-solid-svg-icons';
+import { iconSvg } from '../../lib/icons';
+import type { TimelineData, Translator } from '../../lib/types';
+
+interface Props {
+  type: TimelineData['type'];
+  items: TimelineData[];
+  t: Translator;
+}
+
+// Le type est passé explicitement : l'ancienne version le déduisait du
+// premier élément et affichait « Education » pour une liste vide.
+const { type, items, t } = Astro.props;
+---
+
+<section class="b-2">
+  <div class="cont-title">
+    <h2 class="text-1">{t(type === 'experience' ? 'Experiences' : 'Education')}</h2>
+  </div>
+  <div class="timeline-item-cont">
+    {
+      items.map((item) => (
+        <div class="timeline-item">
+          <div class="timeline-line-cont">
+            <div class="timeline-line" />
+            <div class="timeline-round">
+              {item.logo ? (
+                <img class="timeline-round-image" src={item.logo} alt={`Logo ${item.name}`} />
+              ) : (
+                <Fragment set:html={iconSvg(type === 'experience' ? faBuilding : faAward)} />
+              )}
+            </div>
+          </div>
+          <div class="timeline-text-cont">
+            <h3 class="text-2 spacer-1">
+              {item.name}
+              {item.place && (
+                <Fragment>
+                  {' '}
+                  {t('at')}{' '}
+                  {item.url ? (
+                    <a target="_blank" rel="noreferrer" class="link" href={item.url} title={item.place}>
+                      {item.place}
+                    </a>
+                  ) : (
+                    item.place
+                  )}
+                </Fragment>
+              )}
+            </h3>
+            <div class="timeline-subtext-cont spacer-2">
+              <p class="text-3 ellipsis">{item.period}</p>
+              <p class="text-separator">●</p>
+              <p class="text-3 ellipsis">{item.detail}</p>
+            </div>
+            {item.description.length > 0 && (
+              <div class="text-4 spacer-4">
+                {item.isList ? (
+                  <ul>
+                    {item.description.map((line) => (
+                      <li>{line}</li>
+                    ))}
+                  </ul>
+                ) : (
+                  <div class="timeline-not-list">
+                    {item.description.map((line) => (
+                      <div>{line}</div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>

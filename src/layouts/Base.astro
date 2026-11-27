@@ -1,0 +1,65 @@
+---
+// Ordre des feuilles de style identique à l'ancienne app CRA
+// (index.css, puis reset.css, puis App.css, puis CSS des composants).
+import '../styles/index.css';
+import '../styles/reset.css';
+import '../styles/App.css';
+import '@fortawesome/fontawesome-svg-core/styles.css';
+
+interface Props {
+  /** Code de langue de la page (attribut lang de <html>). */
+  lang: string;
+}
+
+const { lang } = Astro.props;
+
+// URL absolue de la page courante : chaque langue est sa propre URL canonique.
+const pageUrl = new URL(Astro.url.pathname, Astro.site).href;
+
+// Meta du lot 0, conservées telles quelles. Les versions traduites
+// (description, og:locale, hreflang) sont prévues au lot 4.
+const title = 'Mathieu Marcelino | Portfolio';
+const description =
+  'Portfolio de Mathieu Marcelino, Développeur Full-Stack : parcours, expériences professionnelles, formations et projets personnels.';
+const ogImage = new URL('/og-image.png', Astro.site).href;
+const ogImageAlt = 'Mathieu Marcelino, Développeur Full-Stack';
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f1f2f6" />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={pageUrl} />
+
+    <!-- Open Graph / partage sur les réseaux sociaux -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={pageUrl} />
+    <meta property="og:site_name" content="mathi3u.com" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={ogImageAlt} />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:locale:alternate" content="en_US" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={ogImageAlt} />
+
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
