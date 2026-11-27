@@ -50,6 +50,6 @@ The only client-side JS is two small inline scripts: closing the language `<deta
 
 `docker-compose.yml` (project name pinned to `portfolio`, external `proxy` network shared with Nginx Proxy Manager and the Strapi container) has two services:
 - `portfolio-app`: the nginx site.
-- `portfolio-webhook` (`deploy/webhook/`): receives the Strapi publish webhook on the internal network only (`http://portfolio-webhook:9000/hooks/rebuild`, `X-Webhook-Secret` header). Through the mounted Docker socket it runs `docker compose build portfolio-app && up -d`, debouncing bursts with a lock. It never runs `git pull`: code deploys stay manual.
+- `portfolio-webhook` (`deploy/webhook/`): receives the Strapi publish webhook (`X-Webhook-Secret` header). It publishes no host port: Nginx Proxy Manager exposes it at `https://mathi3u.com/hooks/rebuild`, because Strapi refuses webhook URLs that resolve to private IPs in production. Through the mounted Docker socket it runs `docker compose build portfolio-app && up -d`, debouncing bursts with a lock. It never runs `git pull`: code deploys stay manual.
 
 Setup and operations: `deploy/README.md`.

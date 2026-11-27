@@ -27,8 +27,8 @@ services:
       - proxy
 
   # Reçoit le webhook « Publier » de Strapi et reconstruit portfolio-app.
-  # Joignable uniquement sur le réseau Docker interne « proxy » (aucun port
-  # publié) : http://portfolio-webhook:9000/hooks/rebuild
+  # Aucun port publié : exposé par Nginx Proxy Manager (réseau « proxy »)
+  # sur https://mathi3u.com/hooks/rebuild, protégé par X-Webhook-Secret.
   portfolio-webhook:
     container_name: portfolio-webhook
     restart: unless-stopped
